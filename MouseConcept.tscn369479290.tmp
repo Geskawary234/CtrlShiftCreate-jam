@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcsu46qdkbwqx"]
+
+[ext_resource type="Script" uid="uid://bi1y80ffwxwf0" path="res://Scenes/Player/mouse/mouse.gd" id="1_tpibb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_chbvf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qatad"]
+cull_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dsabm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8jqmo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j17yc"]
+albedo_color = Color(0.0383972, 0.0383972, 0.0383972, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpibb"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_chbvf")
+surface_material_override/0 = SubResource("StandardMaterial3D_qatad")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.07015, 0)
+light_energy = 5.687
+shadow_enabled = true
+spot_range = 9.49874
+spot_angle = 77.8602
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.418597, 0.569892, 0, 0.805949, 0.591985, -0.707107, -0.418597, 0.569892, 4.29841, 0, 4.11176)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.97623, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_dsabm")
+
+[node name="Mouse" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.41938, 0)
+script = ExtResource("1_tpibb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mouse"]
+mesh = SubResource("BoxMesh_8jqmo")
+surface_material_override/0 = SubResource("StandardMaterial3D_j17yc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse"]
+shape = SubResource("BoxShape3D_tpibb")
