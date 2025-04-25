@@ -12,4 +12,13 @@ config_version=5
 
 config/name="CtrlSihftCreate jam"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/Materials/": "orange",
+"res://Assets/Models/": "orange",
+"res://Assets/Music/": "purple",
+"res://Assets/Sounds/": "purple",
+"res://Assets/Textures/": "yellow"
+}
