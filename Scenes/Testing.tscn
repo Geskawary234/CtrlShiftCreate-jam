@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://k0l71fhl3udx"]
+
+[ext_resource type="Texture2D" uid="uid://byi007yjaammq" path="res://Assets/Textures/Checker.jpg" id="1_50pdt"]
+[ext_resource type="Script" uid="uid://bbs8yl1gqjg6f" path="res://Scenes/Player/player.gd" id="2_8e680"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_50pdt"]
+turbidity = 251.38
+
+[sub_resource type="Sky" id="Sky_8e680"]
+sky_material = SubResource("PhysicalSkyMaterial_50pdt")
+
+[sub_resource type="Environment" id="Environment_4y0hx"]
+background_mode = 2
+sky = SubResource("Sky_8e680")
+tonemap_mode = 4
+tonemap_exposure = 2.0
+ssao_enabled = true
+glow_enabled = true
+fog_sun_scatter = 0.55
+fog_density = 0.0
+volumetric_fog_density = 0.0001
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4y0hx"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y53xc"]
+albedo_texture = ExtResource("1_50pdt")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7mle0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xgmvj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7wycu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_50pdt"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4y0hx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_4y0hx")
+surface_material_override/0 = SubResource("StandardMaterial3D_y53xc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_7mle0")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_8e680")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_xgmvj")
+debug_color = Color(0, 0.631373, 0.701961, 1)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37114e-07, 0, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_7wycu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134077, 5.21097)
+mesh = SubResource("BoxMesh_50pdt")
