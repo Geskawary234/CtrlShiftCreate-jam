@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://k0l71fhl3udx"]
+[gd_scene load_steps=16 format=3 uid="uid://k0l71fhl3udx"]
 
 [ext_resource type="Texture2D" uid="uid://byi007yjaammq" path="res://Assets/Textures/Checker.jpg" id="1_50pdt"]
 [ext_resource type="Script" uid="uid://bbs8yl1gqjg6f" path="res://Scenes/Player/player.gd" id="2_8e680"]
@@ -33,7 +33,19 @@ uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7wycu"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50pdt"]
+metallic_specular = 1.0
+roughness = 0.05
+
+[sub_resource type="SphereMesh" id="SphereMesh_50pdt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e680"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_50pdt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8e680"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -43,6 +55,11 @@ environment = SubResource("Environment_4y0hx")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
+directional_shadow_split_1 = 0.039
+directional_shadow_split_2 = 0.099
+directional_shadow_split_3 = 0.215
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 71.5
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -66,12 +83,34 @@ debug_color = Color(0, 0.631373, 0.701961, 1)
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 spring_length = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37114e-07, 0, 5)
+[node name="CameraPivot" type="Node3D" parent="Player/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D/CameraPivot"]
+transform = Transform3D(1, -1.83478e-08, -1.94705e-09, 1.83478e-08, 0.977728, 0.209875, -1.94706e-09, -0.209875, 0.977728, 0.78905, 2.1943, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_7wycu")
+surface_material_override/0 = SubResource("StandardMaterial3D_50pdt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134077, 5.21097)
+[node name="RBchecker" type="RayCast3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.64616, 0)
+target_position = Vector3(0, -1.69, 0)
+
+[node name="BodyAttractor" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0331708, 1.27769)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/BodyAttractor"]
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_50pdt")
+surface_material_override/0 = SubResource("StandardMaterial3D_8e680")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0.906168, 3.82524)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("BoxMesh_50pdt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_8e680")
