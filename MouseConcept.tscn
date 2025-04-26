@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://bcsu46qdkbwqx"]
+[gd_scene load_steps=27 format=3 uid="uid://bcsu46qdkbwqx"]
 
 [ext_resource type="Script" uid="uid://cfvx8p77l1vsk" path="res://src/CameraShake.gd" id="1_8jqmo"]
 [ext_resource type="Script" uid="uid://gkhxx3m1axgm" path="res://src/SpawnObjects.gd" id="1_gbajg"]
 [ext_resource type="Script" uid="uid://bi1y80ffwxwf0" path="res://Scenes/Player/mouse/mouse.gd" id="1_tpibb"]
 [ext_resource type="Script" uid="uid://i5f86ompopxc" path="res://Scenes/Player/mouse/player_physical_collider.gd" id="4_ri5n3"]
+[ext_resource type="PackedScene" uid="uid://cwcdefovm3e74" path="res://Scenes/Player/mouse/Mouse_model.tscn" id="5_pds5r"]
 [ext_resource type="Script" uid="uid://blfv7vqnici02" path="res://src/convoyer.gd" id="6_j17yc"]
 [ext_resource type="Texture2D" uid="uid://d0d5dgwqt5h34" path="res://Assets/Textures/convoyer-belt.jpg" id="7_ri5n3"]
 [ext_resource type="Script" uid="uid://bxomda46m28y8" path="res://src/shredder.gd" id="8_pds5r"]
@@ -18,23 +19,11 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri5n3"]
 bg_color = Color(1, 0, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_8jqmo"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j17yc"]
-transparency = 1
-albedo_color = Color(0.0383972, 0.0383972, 0.0383972, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlbib"]
-render_priority = -1
-next_pass = SubResource("StandardMaterial3D_j17yc")
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_tpibb"]
+size = Vector3(1.74243, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j17yc"]
-size = Vector3(1.12207, 1.03125, 1.0332)
+size = Vector3(1.83984, 1.03125, 1.0332)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j17yc"]
 friction = 0.0
@@ -158,11 +147,8 @@ axis_lock_angular_z = true
 script = ExtResource("1_tpibb")
 metadata/_edit_group_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mouse"]
-mesh = SubResource("BoxMesh_8jqmo")
-surface_material_override/0 = SubResource("StandardMaterial3D_hlbib")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.371216, 0, 0)
 shape = SubResource("BoxShape3D_tpibb")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Mouse"]
@@ -172,12 +158,16 @@ mass = 25.0
 script = ExtResource("4_ri5n3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358887, 0, 2.38419e-07)
 shape = SubResource("BoxShape3D_j17yc")
 debug_color = Color(0.810675, 0, 0.149749, 0.42)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Mouse"]
 remote_path = NodePath("../RigidBody3D")
 update_scale = false
+
+[node name="Mouse" parent="Mouse" instance=ExtResource("5_pds5r")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.486589, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true

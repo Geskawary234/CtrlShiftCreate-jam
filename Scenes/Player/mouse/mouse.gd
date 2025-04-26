@@ -35,9 +35,11 @@ func hit(other):
 	if hit_cooldown<=0:
 		if other is RigidBody3D:
 			health -= 5
+			mouse_model.take_damage()
 			hit_cooldown = 1
 		elif other is Shard:
 			health -= 1
+			mouse_model.take_damage()
 			hit_cooldown = 1
 		
 		if health<=0:
@@ -46,6 +48,8 @@ func hit(other):
 		
 		health_bar.value = 100*(health/25)
 
+
+@onready var mouse_model: Node3D = $Mouse
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	
@@ -56,14 +60,18 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		mouse_model.jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("w", "s", "d", "a")
+	mouse_model.direction = input_dir
 	
 	rotation.y += input_dir.y * delta * 4
 	
-	var direction := (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
+	var direction := -(transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
+	
+	
 	#var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
