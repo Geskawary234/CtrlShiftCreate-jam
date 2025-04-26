@@ -61,20 +61,8 @@ shape = SubResource("WorldBoundaryShape3D_dsabm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97272, -5.49763)
 shape = SubResource("BoxShape3D_8jqmo")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.46331, 2.97272, 0.469812)
-shape = SubResource("BoxShape3D_8jqmo")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.082664, 2.97272, 5.48699)
-shape = SubResource("BoxShape3D_8jqmo")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.49469, 2.97272, -0.480448)
-shape = SubResource("BoxShape3D_8jqmo")
-
 [node name="Mouse" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.751253, 0, 0.660015, 0, 1, 0, -0.660015, 0, 0.751253, 0, -4.12373, 0)
+transform = Transform3D(0.751253, 0, 0.660015, 0, 1, 0, -0.660015, 0, 0.751253, 0, -2.7801, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
