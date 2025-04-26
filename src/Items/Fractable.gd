@@ -11,9 +11,7 @@ func _ready() -> void:
 	body_entered.connect(hit)
 
 func hit(other):
-	print(other)
-	if other is RigidBody3D:
-		fracture(5)
+	fracture(5)
 
 func fracture(power : int = 0):
 	freeze = true
@@ -33,7 +31,7 @@ func fracture(power : int = 0):
 			
 			
 			var r = RigidBody3D.new()
-			r.add_collision_exception_with(%Mouse)
+			r.add_collision_exception_with(get_tree().current_scene.mouse)
 			r.add_child(col)
 			r.position = i.position
 			r.linear_velocity = linear_velocity + r.position

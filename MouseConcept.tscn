@@ -1,11 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcsu46qdkbwqx"]
+[gd_scene load_steps=10 format=3 uid="uid://bcsu46qdkbwqx"]
 
 [ext_resource type="Script" uid="uid://cfvx8p77l1vsk" path="res://src/CameraShake.gd" id="1_8jqmo"]
 [ext_resource type="Script" uid="uid://gkhxx3m1axgm" path="res://src/SpawnObjects.gd" id="1_gbajg"]
 [ext_resource type="Script" uid="uid://bi1y80ffwxwf0" path="res://Scenes/Player/mouse/mouse.gd" id="1_tpibb"]
-[ext_resource type="Script" uid="uid://dcrxceryjlej4" path="res://src/Items/Fractable.gd" id="4_j17yc"]
-[ext_resource type="PackedScene" uid="uid://cc8qatwhjcupn" path="res://Assets/Models/Bottle/Bottle.glb" id="6_j17yc"]
-[ext_resource type="PackedScene" uid="uid://cej7sspt8ppvs" path="res://Assets/Models/Bottle/Bottle_fractured.glb" id="7_ri5n3"]
 
 [sub_resource type="Environment" id="Environment_dsabm"]
 ssao_enabled = true
@@ -27,10 +24,6 @@ shading_mode = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j17yc"]
 size = Vector3(1.12207, 1.03125, 1.0332)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ri5n3"]
-height = 3.00464
-radius = 0.629883
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_gbajg")
@@ -92,55 +85,3 @@ size = Vector3(15.0332, 8.09814, 23.8652)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7728, -1.28936, -7.50895)
 operation = 2
 size = Vector3(14.3594, 7.99487, 23.5955)
-
-[node name="Fractable" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45742, -4.15927, -2.50489)
-script = ExtResource("4_j17yc")
-fractured = ExtResource("7_ri5n3")
-metadata/_custom_type_script = "uid://dcrxceryjlej4"
-metadata/_edit_group_ = true
-
-[node name="Bottle" parent="Fractable" instance=ExtResource("6_j17yc")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fractable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
-shape = SubResource("CylinderShape3D_ri5n3")
-
-[node name="Fractable2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95781, -4.15927, -4.98445)
-script = ExtResource("4_j17yc")
-fractured = ExtResource("7_ri5n3")
-metadata/_custom_type_script = "uid://dcrxceryjlej4"
-metadata/_edit_group_ = true
-
-[node name="Bottle" parent="Fractable2" instance=ExtResource("6_j17yc")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fractable2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
-shape = SubResource("CylinderShape3D_ri5n3")
-
-[node name="Fractable3" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08, -4.15927, -7.54566)
-script = ExtResource("4_j17yc")
-fractured = ExtResource("7_ri5n3")
-metadata/_custom_type_script = "uid://dcrxceryjlej4"
-metadata/_edit_group_ = true
-
-[node name="Bottle" parent="Fractable3" instance=ExtResource("6_j17yc")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fractable3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
-shape = SubResource("CylinderShape3D_ri5n3")
-
-[node name="Fractable4" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04593, -4.15927, -9.42341)
-script = ExtResource("4_j17yc")
-fractured = ExtResource("7_ri5n3")
-metadata/_custom_type_script = "uid://dcrxceryjlej4"
-metadata/_edit_group_ = true
-
-[node name="Bottle" parent="Fractable4" instance=ExtResource("6_j17yc")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fractable4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
-shape = SubResource("CylinderShape3D_ri5n3")
