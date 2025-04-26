@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt7kuynbmj7uv"]
+
+[ext_resource type="Script" uid="uid://couiwokthf563" path="res://src/Blast.gd" id="1_3lec6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3lec6"]
+radius = 2.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_3lec6"]
+outer_radius = 0.577
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lec6"]
+transparency = 1
+albedo_color = Color(1.657, 0, 0, 1)
+
+[node name="Blast" type="Area3D"]
+script = ExtResource("1_3lec6")
+blast_radius = 2.0
+shockwave_color = Color(1.657, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3lec6")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+mesh = SubResource("TorusMesh_3lec6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3lec6")

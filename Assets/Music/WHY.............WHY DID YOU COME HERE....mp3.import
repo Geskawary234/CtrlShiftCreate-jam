@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dj5lqtrm5lsn2"
+path="res://.godot/imported/WHY.............WHY DID YOU COME HERE....mp3-d074cbb2fc29ab0700238b6d5d49b5e1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/WHY.............WHY DID YOU COME HERE....mp3"
+dest_files=["res://.godot/imported/WHY.............WHY DID YOU COME HERE....mp3-d074cbb2fc29ab0700238b6d5d49b5e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://4cxjceiqvlsd"]
+
+[ext_resource type="Script" uid="uid://gkrmj4q4kbae" path="res://src/Items/HeavyItem.gd" id="1_46xuq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_46xuq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_46xuq"]
+
+[node name="HeavyBox" type="RigidBody3D"]
+mass = 100.0
+script = ExtResource("1_46xuq")
+metadata/_custom_type_script = "uid://dno3ql7sfflt0"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_46xuq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_46xuq")

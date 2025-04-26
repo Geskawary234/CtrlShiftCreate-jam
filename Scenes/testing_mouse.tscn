@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://clg43uchsm753"]
+
+[ext_resource type="PackedScene" uid="uid://bt7kuynbmj7uv" path="res://Scenes/blast.tscn" id="1_icuxw"]
+[ext_resource type="PackedScene" uid="uid://bribwebwk37rn" path="res://Scenes/Items/hammer.tscn" id="2_68ioa"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_snofd"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_icuxw"]
+sky_material = SubResource("ProceduralSkyMaterial_snofd")
+
+[sub_resource type="Environment" id="Environment_68ioa"]
+background_mode = 2
+sky = SubResource("Sky_icuxw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_snofd"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_68ioa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_snofd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="Blast" parent="." instance=ExtResource("1_icuxw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0646037, 0.067375, -1.15579)
+
+[node name="Hammer" parent="." instance=ExtResource("2_68ioa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07079, 1.84111, -0.357608)
+mass = 1.0
+
+[node name="Hammer2" parent="." instance=ExtResource("2_68ioa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01904, 1.84111, -0.732672)
+mass = 1.0
