@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bcsu46qdkbwqx"]
+[gd_scene load_steps=17 format=3 uid="uid://bcsu46qdkbwqx"]
 
 [ext_resource type="Script" uid="uid://bi1y80ffwxwf0" path="res://Scenes/Player/mouse/mouse.gd" id="1_tpibb"]
 [ext_resource type="Material" uid="uid://datpbj7kxql4f" path="res://Assets/Materials/RedCubeMaterial.tres" id="3_8jqmo"]
@@ -22,6 +22,13 @@ size = Vector3(13.0193, 6.94543, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j17yc"]
 albedo_color = Color(0.0383972, 0.0383972, 0.0383972, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsabm"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8jqmo"]
+material = SubResource("StandardMaterial3D_dsabm")
+size = Vector2(1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tpibb"]
 
@@ -83,6 +90,10 @@ script = ExtResource("1_tpibb")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mouse"]
 mesh = SubResource("BoxMesh_8jqmo")
 surface_material_override/0 = SubResource("StandardMaterial3D_j17yc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mouse/MeshInstance3D"]
+transform = Transform3D(-2.98023e-08, -1, 1.77636e-15, -4.37114e-08, 0, 1, -1, 2.98023e-08, -4.37114e-08, -0.501932, -2.36828e-16, 2.98599e-08)
+mesh = SubResource("PlaneMesh_8jqmo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse"]
 shape = SubResource("BoxShape3D_tpibb")
