@@ -1,8 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://cwcdefovm3e74"]
+[gd_scene load_steps=17 format=4 uid="uid://cwcdefovm3e74"]
 
 [ext_resource type="Script" uid="uid://cnwl1tgoskqye" path="res://Scenes/Player/mouse/mouse_model.gd" id="1_oph72"]
 [ext_resource type="Texture2D" uid="uid://c1h6mamyv88r6" path="res://Assets/Models/Player_mouse/albedo.png" id="1_sapqd"]
 [ext_resource type="Texture2D" uid="uid://c3lvphbcmplj2" path="res://Assets/Models/Player_mouse/roughness.png" id="2_oph72"]
+[ext_resource type="AudioStream" uid="uid://onignjyer04q" path="res://Assets/Sounds/Mouse/11L-mouse_squeaking,_tak-1745694843645.mp3" id="4_5082u"]
+[ext_resource type="AudioStream" uid="uid://cw4kvqn8257ny" path="res://Assets/Sounds/Mouse/11L-mouse_squeaking,_tak-1745694844376.mp3" id="5_3r8cg"]
+[ext_resource type="AudioStream" uid="uid://4j4t0rfo1ga3" path="res://Assets/Sounds/Mouse/11L-mouse_squeaking,_tak-1745694845059.mp3" id="6_linhc"]
+[ext_resource type="AudioStream" uid="uid://bm2hk3sro44ac" path="res://Assets/Sounds/Mouse/11L-mouse_squeaking,_tak-1745694847244.mp3" id="7_c5q0p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oph72"]
 transparency = 1
@@ -210,6 +214,13 @@ _data = {
 &"Jump": SubResource("Animation_php1l")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e4o63"]
+streams_count = 4
+stream_0/stream = ExtResource("4_5082u")
+stream_1/stream = ExtResource("5_3r8cg")
+stream_2/stream = ExtResource("6_linhc")
+stream_3/stream = ExtResource("7_c5q0p")
+
 [node name="Mouse" type="Node3D"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("1_oph72")
@@ -323,3 +334,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_o2o0i")
 }
 speed_scale = 2.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_e4o63")

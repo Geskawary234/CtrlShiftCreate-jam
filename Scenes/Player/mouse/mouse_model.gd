@@ -21,9 +21,11 @@ func _process(delta: float) -> void:
 @onready var ap: AnimationPlayer = $AnimationPlayer2
 func jump():
 	ap.play("Jump")
-	
 
+
+@onready var sfx: AudioStreamPlayer3D = $AudioStreamPlayer3D
 func take_damage():
+	sfx.play()
 	var t = create_tween()
 	t.tween_property(overlay_mat,'albedo_color',Color(1,0,0,0.5),0.2)
 	await t.finished

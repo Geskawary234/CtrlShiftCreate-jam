@@ -43,6 +43,7 @@ func hit(other):
 			hit_cooldown = 1
 		
 		if health<=0:
+			await get_tree().create_timer(0.5).timeout
 			get_tree().change_scene_to_file('res://ui/died_menu.tscn')
 		
 		
