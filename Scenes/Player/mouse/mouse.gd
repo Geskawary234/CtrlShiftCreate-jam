@@ -33,3 +33,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	var col = move_and_collide(velocity.normalized() * delta,false,0.001,true,10)
+	if col:
+		if col.get_normal().y != 1:
+			velocity = -velocity.normalized() * 7
