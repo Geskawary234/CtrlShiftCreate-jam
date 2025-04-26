@@ -5,9 +5,14 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 @onready var cam: Camera3D = $"../Camera3D"
+@onready var physical_col: RigidBody3D = $RigidBody3D
+
 
 func _ready() -> void:
-	add_collision_exception_with($RigidBody3D)
+	add_collision_exception_with(physical_col)
+	physical_col.contact_monitor = true
+	physical_col.max_contacts_reported = 10
+	physical_col.body_entered.connect(hit)
 	#cam_rc.add_exception($RigidBody3D)
 '''
 func _process(delta: float) -> void:
@@ -19,7 +24,27 @@ func _process(delta: float) -> void:
 			outline.show()
 		else:
 			outline.hide()'''
+			
+@onready var health_bar: ProgressBar = $"../Camera3D/Control/ProgressBar"
+@onready var score_lab: Label = $"../Camera3D/Control/Score"
 
+
+var health : float = 25
+var hit_cooldown : float = 0
+func hit(other):
+	if hit_cooldown<=0:
+		if other is RigidBody3D:
+			health -= 5
+			hit_cooldown = 1
+		elif other is Shard:
+			health -= 1
+			hit_cooldown = 1
+		
+		if health<=0:
+			get_tree().change_scene_to_file('res://ui/died_menu.tscn')
+		
+		
+		health_bar.value = 100*(health/25)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -48,5 +73,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	score_lab.text = 'Счет: '+str(get_tree().current_scene.score)
+	
+	if hit_cooldown>0:
+		hit_cooldown -= delta
+	
 	
 	

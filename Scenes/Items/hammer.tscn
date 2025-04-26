@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://bribwebwk37rn"]
+[gd_scene load_steps=4 format=3 uid="uid://bribwebwk37rn"]
 
-[ext_resource type="Script" uid="uid://dcrxceryjlej4" path="res://src/Items/Fractable.gd" id="1_s04du"]
 [ext_resource type="PackedScene" uid="uid://btxp17suv2ucx" path="res://Assets/Models/Hammers/Hammer_0.glb" id="2_xnrnd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_j17yc"]
@@ -13,9 +12,9 @@ radius = 0.140625
 
 [node name="Hammer" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.175229, 0.984528, 0, -0.984528, 0.175229, 0, 0, 0)
-script = ExtResource("1_s04du")
-fractured = ExtResource("2_xnrnd")
-metadata/_custom_type_script = "uid://dcrxceryjlej4"
+mass = 10.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.6, 0)
 metadata/_edit_group_ = true
 
 [node name="Hammer_0" parent="." instance=ExtResource("2_xnrnd")]

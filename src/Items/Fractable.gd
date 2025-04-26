@@ -11,7 +11,8 @@ func _ready() -> void:
 	body_entered.connect(hit)
 
 func hit(other):
-	fracture(5)
+	if other is Convoyer or other is Mouse_col:
+		fracture(5)
 
 func fracture(power : int = 0):
 	freeze = true
@@ -31,6 +32,7 @@ func fracture(power : int = 0):
 			
 			
 			var r = RigidBody3D.new()
+			r.set_script(preload('res://src/Items/Shard.gd'))
 			r.add_collision_exception_with(get_tree().current_scene.mouse)
 			r.add_child(col)
 			r.position = i.position

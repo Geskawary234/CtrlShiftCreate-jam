@@ -17,6 +17,8 @@ func shake():
 	current_shake_duration = shake_duration
 	
 func _process(delta):
+	look_at(get_parent().mouse.global_position)
+	
 	
 	
 	if current_shake_duration > 0:
