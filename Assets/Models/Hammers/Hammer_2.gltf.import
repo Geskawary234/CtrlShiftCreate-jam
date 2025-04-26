@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cgb6k36pr1wnf"
-path="res://.godot/imported/cube_red_fragmented.glb-4da8a83304663185a31873c975dfaaca.scn"
+uid="uid://bkw52xj1twjd4"
+path="res://.godot/imported/Hammer_2.gltf-d23fd25f8714a52858da1d1b0d83c527.scn"
 
 [deps]
 
-source_file="res://cube/cube_red_fragmented.glb"
-dest_files=["res://.godot/imported/cube_red_fragmented.glb-4da8a83304663185a31873c975dfaaca.scn"]
+source_file="res://Assets/Models/Hammers/Hammer_2.gltf"
+dest_files=["res://.godot/imported/Hammer_2.gltf-d23fd25f8714a52858da1d1b0d83c527.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -32,13 +32,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"Material": {
-"use_external/enabled": false,
-"use_external/path": "res://cube/marble.tres"
-}
-}
-}
-gltf/naming_version=0
+_subresources={}
+gltf/naming_version=1
 gltf/embedded_image_handling=1

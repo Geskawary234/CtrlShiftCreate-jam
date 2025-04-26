@@ -14,10 +14,6 @@ config/name="CtrlSihftCreate jam"
 run/main_scene="uid://k0l71fhl3udx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/destruction/plugin.cfg")
-
 [file_customization]
 
 folder_colors={

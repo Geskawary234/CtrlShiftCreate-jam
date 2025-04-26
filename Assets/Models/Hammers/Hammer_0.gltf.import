@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://celvn43a7xgcb"
-path="res://.godot/imported/cube_fragments.glb-b90c58c2cf782b8838d36706b8edb863.scn"
+uid="uid://0h2g2pqhkm4v"
+path="res://.godot/imported/Hammer_0.gltf-ef0f9b36f78f3c5ff4af20dd4390a9af.scn"
 
 [deps]
 
-source_file="res://cube/cube_fragments.glb"
-dest_files=["res://.godot/imported/cube_fragments.glb-b90c58c2cf782b8838d36706b8edb863.scn"]
+source_file="res://Assets/Models/Hammers/Hammer_0.gltf"
+dest_files=["res://.godot/imported/Hammer_0.gltf-ef0f9b36f78f3c5ff4af20dd4390a9af.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.2
 nodes/import_as_skeleton_bones=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
@@ -34,11 +34,15 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Material": {
-"use_external/enabled": false,
-"use_external/path": "res://cube/marble.tres"
+"wire_008061138.002": {
+"use_external/enabled": true,
+"use_external/path": "uid://ba6tnfutk1ro6"
+},
+"wire_224086086.002": {
+"use_external/enabled": true,
+"use_external/path": "uid://bdeq4pxslm6vr"
 }
 }
 }
-gltf/naming_version=0
+gltf/naming_version=1
 gltf/embedded_image_handling=1

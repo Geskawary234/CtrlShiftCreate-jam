@@ -6,6 +6,20 @@ const JUMP_VELOCITY = 4.5
 
 @onready var cam: Camera3D = $"../Camera3D"
 
+func _ready() -> void:
+	add_collision_exception_with($RigidBody3D)
+	#cam_rc.add_exception($RigidBody3D)
+'''
+func _process(delta: float) -> void:
+	cam_rc.target_position = (global_position - cam_rc.global_position).normalized() * 100
+	cam_rc.force_raycast_update()
+	if cam_rc.is_colliding():
+		print(cam_rc.get_collider())
+		if cam_rc.get_collider() != self:
+			outline.show()
+		else:
+			outline.hide()'''
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -32,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
+
 	move_and_slide()
+	
 	

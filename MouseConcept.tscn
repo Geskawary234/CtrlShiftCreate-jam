@@ -1,95 +1,56 @@
-[gd_scene load_steps=22 format=3 uid="uid://bcsu46qdkbwqx"]
+[gd_scene load_steps=14 format=3 uid="uid://bcsu46qdkbwqx"]
 
 [ext_resource type="Script" uid="uid://cfvx8p77l1vsk" path="res://src/CameraShake.gd" id="1_8jqmo"]
+[ext_resource type="Script" uid="uid://gkhxx3m1axgm" path="res://src/SpawnObjects.gd" id="1_gbajg"]
 [ext_resource type="Script" uid="uid://bi1y80ffwxwf0" path="res://Scenes/Player/mouse/mouse.gd" id="1_tpibb"]
-[ext_resource type="Material" uid="uid://datpbj7kxql4f" path="res://Assets/Materials/RedCubeMaterial.tres" id="3_8jqmo"]
-[ext_resource type="Script" uid="uid://o0gknsms36et" path="res://addons/destruction/destruction.gd" id="3_dsabm"]
-[ext_resource type="PackedScene" uid="uid://celvn43a7xgcb" path="res://cube/cube_fragments.glb" id="4_8jqmo"]
+[ext_resource type="Script" uid="uid://dcrxceryjlej4" path="res://src/Items/Fractable.gd" id="4_j17yc"]
 [ext_resource type="PackedScene" uid="uid://cc8qatwhjcupn" path="res://Assets/Models/Bottle/Bottle.glb" id="6_j17yc"]
-[ext_resource type="Script" uid="uid://dno3ql7sfflt0" path="res://src/Items/Item.gd" id="6_pds5r"]
 [ext_resource type="PackedScene" uid="uid://cej7sspt8ppvs" path="res://Assets/Models/Bottle/Bottle_fractured.glb" id="7_ri5n3"]
 
 [sub_resource type="Environment" id="Environment_dsabm"]
 ssao_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_chbvf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qatad"]
-cull_mode = 2
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dsabm"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8jqmo"]
-size = Vector3(13.0193, 6.94543, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_8jqmo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j17yc"]
+transparency = 1
 albedo_color = Color(0.0383972, 0.0383972, 0.0383972, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsabm"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_8jqmo"]
-material = SubResource("StandardMaterial3D_dsabm")
-size = Vector2(1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlbib"]
+render_priority = -1
+next_pass = SubResource("StandardMaterial3D_j17yc")
+transparency = 1
+no_depth_test = true
+shading_mode = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tpibb"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_qatad"]
-material = ExtResource("3_8jqmo")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dsabm"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_j17yc"]
+size = Vector3(1.12207, 1.03125, 1.0332)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ri5n3"]
-height = 2.60107
-radius = 0.603027
+height = 3.00464
+radius = 0.629883
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_gbajg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dsabm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_chbvf")
-surface_material_override/0 = SubResource("StandardMaterial3D_qatad")
-
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.99469, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.22181, 1.64918e-07)
 light_energy = 4.192
 shadow_enabled = true
 shadow_blur = 1.202
-spot_range = 14.5226
-spot_angle = 77.8602
+spot_range = 129.05
+spot_angle = 80.5617
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.418597, 0.569892, 0, 0.805949, 0.591985, -0.707107, -0.418597, 0.569892, 4.29841, 0, 4.11176)
+transform = Transform3D(0.707107, -0.418597, 0.569892, 0, 0.805949, 0.591985, -0.707107, -0.418597, 0.569892, 3.90043, 0, 4.04651)
 script = ExtResource("1_8jqmo")
 shake_duration = 0.0
 shake_fade_out_speed = 0.5
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.97623, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_dsabm")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97272, -5.49763)
-shape = SubResource("BoxShape3D_8jqmo")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.46331, 2.97272, 0.469812)
-shape = SubResource("BoxShape3D_8jqmo")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.082664, 2.97272, 5.48699)
-shape = SubResource("BoxShape3D_8jqmo")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.49469, 2.97272, -0.480448)
-shape = SubResource("BoxShape3D_8jqmo")
 
 [node name="Mouse" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
@@ -98,47 +59,88 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_tpibb")
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mouse"]
 mesh = SubResource("BoxMesh_8jqmo")
-surface_material_override/0 = SubResource("StandardMaterial3D_j17yc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mouse/MeshInstance3D"]
-transform = Transform3D(-2.98023e-08, -1, 1.77636e-15, -4.37114e-08, 0, 1, -1, 2.98023e-08, -4.37114e-08, -0.501932, -2.36828e-16, 2.98599e-08)
-mesh = SubResource("PlaneMesh_8jqmo")
+surface_material_override/0 = SubResource("StandardMaterial3D_hlbib")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse"]
 shape = SubResource("BoxShape3D_tpibb")
 
-[node name="Obj" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17)
-freeze = true
+[node name="RigidBody3D" type="RigidBody3D" parent="Mouse"]
+transform = Transform3D(0.751253, 0, 0.660015, 0, 1, 0, -0.660015, 0, 0.751253, 0, -4.12373, 0)
+top_level = true
+mass = 25.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obj"]
-mesh = SubResource("BoxMesh_qatad")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse/RigidBody3D"]
+shape = SubResource("BoxShape3D_j17yc")
+debug_color = Color(0.810675, 0, 0.149749, 0.42)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Obj"]
-shape = SubResource("BoxShape3D_dsabm")
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Mouse"]
+remote_path = NodePath("../RigidBody3D")
+update_scale = false
 
-[node name="Destruction" type="Node" parent="Obj" node_paths=PackedStringArray("shard_container")]
-script = ExtResource("3_dsabm")
-fragmented = ExtResource("4_8jqmo")
-shard_container = NodePath("../..")
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
 
-[node name="Bottle" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76175, 0, -1.80903)
-script = ExtResource("6_pds5r")
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7728, -1.341, -7.50895)
+size = Vector3(15.0332, 8.09814, 23.8652)
 
-[node name="Bottle" parent="Bottle" instance=ExtResource("6_j17yc")]
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7728, -1.28936, -7.50895)
+operation = 2
+size = Vector3(14.3594, 7.99487, 23.5955)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69946, 0)
+[node name="Fractable" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45742, -4.15927, -2.50489)
+script = ExtResource("4_j17yc")
+fractured = ExtResource("7_ri5n3")
+metadata/_custom_type_script = "uid://dcrxceryjlej4"
+metadata/_edit_group_ = true
+
+[node name="Bottle" parent="Fractable" instance=ExtResource("6_j17yc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fractable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
 shape = SubResource("CylinderShape3D_ri5n3")
 
-[node name="Destruction" type="Node" parent="Bottle" node_paths=PackedStringArray("shard_container")]
-script = ExtResource("3_dsabm")
-fragmented = ExtResource("7_ri5n3")
-shard_container = NodePath("../..")
-fade_delay = 0.5
-shrink_delay = 0.5
-metadata/_custom_type_script = "uid://o0gknsms36et"
+[node name="Fractable2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95781, -4.15927, -4.98445)
+script = ExtResource("4_j17yc")
+fractured = ExtResource("7_ri5n3")
+metadata/_custom_type_script = "uid://dcrxceryjlej4"
+metadata/_edit_group_ = true
+
+[node name="Bottle" parent="Fractable2" instance=ExtResource("6_j17yc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fractable2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
+shape = SubResource("CylinderShape3D_ri5n3")
+
+[node name="Fractable3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08, -4.15927, -7.54566)
+script = ExtResource("4_j17yc")
+fractured = ExtResource("7_ri5n3")
+metadata/_custom_type_script = "uid://dcrxceryjlej4"
+metadata/_edit_group_ = true
+
+[node name="Bottle" parent="Fractable3" instance=ExtResource("6_j17yc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fractable3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
+shape = SubResource("CylinderShape3D_ri5n3")
+
+[node name="Fractable4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04593, -4.15927, -9.42341)
+script = ExtResource("4_j17yc")
+fractured = ExtResource("7_ri5n3")
+metadata/_custom_type_script = "uid://dcrxceryjlej4"
+metadata/_edit_group_ = true
+
+[node name="Bottle" parent="Fractable4" instance=ExtResource("6_j17yc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fractable4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
+shape = SubResource("CylinderShape3D_ri5n3")

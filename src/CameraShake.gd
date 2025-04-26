@@ -15,8 +15,10 @@ func _ready():
 # Call this function to initiate the shake
 func shake():
 	current_shake_duration = shake_duration
-
+	
 func _process(delta):
+	
+	
 	if current_shake_duration > 0:
 		# Generate random shake offset on x and y axes only
 		var x_offset = randf_range(-1.0, 1.0) * shake_magnitude

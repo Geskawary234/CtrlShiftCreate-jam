@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://bded1jvr1bkm7"]
+
+[ext_resource type="Script" uid="uid://dcrxceryjlej4" path="res://src/Items/Fractable.gd" id="1_fwco3"]
+[ext_resource type="PackedScene" uid="uid://btxp17suv2ucx" path="res://Assets/Models/Hammers/Hammer_0.glb" id="1_xy2se"]
+[ext_resource type="PackedScene" uid="uid://cej7sspt8ppvs" path="res://Assets/Models/Bottle/Bottle_fractured.glb" id="2_e3cxx"]
+[ext_resource type="PackedScene" uid="uid://cc8qatwhjcupn" path="res://Assets/Models/Bottle/Bottle.glb" id="3_e3cxx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ruxxn"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_xy2se"]
+sky_material = SubResource("ProceduralSkyMaterial_ruxxn")
+
+[sub_resource type="Environment" id="Environment_fwco3"]
+background_mode = 2
+sky = SubResource("Sky_xy2se")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ruxxn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3cxx"]
+albedo_color = Color(0.244776, 0.244776, 0.244776, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_601tc"]
+material = SubResource("StandardMaterial3D_e3cxx")
+size = Vector2(100, 100)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fwco3"]
+height = 2.06348
+radius = 0.119141
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_601tc"]
+height = 2.82983
+radius = 0.529297
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fwco3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_ruxxn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_601tc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76913, 5.29474)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(0.228516, -0.566109, 0.792023, 0.233336, -0.757988, -0.609105, 0.945164, 0.323998, -0.0411188, 0.696372, 6.31045, -2)
+script = ExtResource("1_fwco3")
+fractured = ExtResource("1_xy2se")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.999999, 0, -3.8743e-07, 0, 1, -1.29454e-07, 2.41026e-06, -3.07336e-08, 1, 8.34465e-07, 0.119782, -4.76837e-07)
+shape = SubResource("CylinderShape3D_fwco3")
+
+[node name="Hammer_0" parent="RigidBody3D" instance=ExtResource("1_xy2se")]
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45362, 6.31045, -1.75145)
+script = ExtResource("1_fwco3")
+fractured = ExtResource("2_e3cxx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(1, 0, -3.87433e-07, 0, 1, -1.29454e-07, 2.41029e-06, -3.0734e-08, 1.00001, 8.34465e-07, 1.55598, -4.76837e-07)
+shape = SubResource("CylinderShape3D_601tc")
+
+[node name="Bottle" parent="RigidBody3D2" instance=ExtResource("3_e3cxx")]
