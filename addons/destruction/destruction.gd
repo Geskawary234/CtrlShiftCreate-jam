@@ -71,6 +71,7 @@ func _add_shard(original: MeshInstance3D, explosion_power: float) -> void:
 	var body := RigidBody3D.new()
 	var mesh := MeshInstance3D.new()
 	var shape := CollisionShape3D.new()
+	body.add_collision_exception_with(%Mouse)
 	body.add_child(mesh)
 	body.add_child(shape)
 	shard_container.add_child(body, true)
