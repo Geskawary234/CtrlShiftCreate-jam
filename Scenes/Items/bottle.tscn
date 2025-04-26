@@ -1,16 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://08vn3xybyeik"]
+[gd_scene load_steps=10 format=3 uid="uid://08vn3xybyeik"]
 
-[ext_resource type="Script" uid="uid://dcrxceryjlej4" path="res://src/Items/Fractable.gd" id="1_lv6nd"]
+[ext_resource type="Script" uid="uid://oc7ebefhadns" path="res://Scenes/Items/bottle.gd" id="1_8g7sd"]
 [ext_resource type="PackedScene" uid="uid://cej7sspt8ppvs" path="res://Assets/Models/Bottle/Bottle_fractured.glb" id="2_djy8p"]
 [ext_resource type="PackedScene" uid="uid://cc8qatwhjcupn" path="res://Assets/Models/Bottle/Bottle.glb" id="3_5nowo"]
+[ext_resource type="AudioStream" uid="uid://qo4nina7gv0e" path="res://Assets/Sounds/Glass/shatter1.mp3" id="3_gpmim"]
+[ext_resource type="AudioStream" uid="uid://wofo35vbsjuh" path="res://Assets/Sounds/Glass/shatter2.mp3" id="4_5ve3y"]
+[ext_resource type="AudioStream" uid="uid://4psdlqo6vqfp" path="res://Assets/Sounds/Glass/shatter3.mp3" id="5_cqqi5"]
+[ext_resource type="AudioStream" uid="uid://l1lxbmu01bun" path="res://Assets/Sounds/Glass/shatter4.mp3" id="6_cgv8h"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gpmim"]
+streams_count = 4
+stream_0/stream = ExtResource("3_gpmim")
+stream_1/stream = ExtResource("4_5ve3y")
+stream_2/stream = ExtResource("5_cqqi5")
+stream_3/stream = ExtResource("6_cgv8h")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ri5n3"]
 height = 3.00464
 radius = 0.629883
 
 [node name="Bottle" type="RigidBody3D"]
-script = ExtResource("1_lv6nd")
+script = ExtResource("1_8g7sd")
 fractured = ExtResource("2_djy8p")
+stream_on_fracture = SubResource("AudioStreamRandomizer_gpmim")
 metadata/_custom_type_script = "uid://dcrxceryjlej4"
 metadata/_edit_group_ = true
 

@@ -1,28 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://bribwebwk37rn"]
+[gd_scene load_steps=10 format=3 uid="uid://bribwebwk37rn"]
 
+[ext_resource type="Script" uid="uid://ymgo26vkrwkx" path="res://Scenes/Items/hammer.gd" id="1_s04du"]
+[ext_resource type="AudioStream" uid="uid://i5t5aldy1trt" path="res://Assets/Sounds/hammer/hammer_falling1.mp3" id="2_6kdac"]
 [ext_resource type="PackedScene" uid="uid://btxp17suv2ucx" path="res://Assets/Models/Hammers/Hammer_0.glb" id="2_xnrnd"]
+[ext_resource type="AudioStream" uid="uid://dp72f2vptj1kc" path="res://Assets/Sounds/hammer/hammer_falling2.mp3" id="3_enspb"]
+[ext_resource type="AudioStream" uid="uid://btjqt8swxmw7o" path="res://Assets/Sounds/hammer/hammer_falling3.mp3" id="4_g4hgm"]
+[ext_resource type="AudioStream" uid="uid://cdfm4jifx84gj" path="res://Assets/Sounds/hammer/hammer_falling4.mp3" id="5_3hljy"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_j17yc"]
-height = 2.09473
-radius = 0.0996094
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hlda8"]
+streams_count = 4
+stream_0/stream = ExtResource("2_6kdac")
+stream_1/stream = ExtResource("3_enspb")
+stream_2/stream = ExtResource("4_g4hgm")
+stream_3/stream = ExtResource("5_3hljy")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ri5n3"]
-height = 0.501953
-radius = 0.140625
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6kdac"]
+radius = 0.107422
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_enspb"]
+height = 0.494873
+radius = 0.107422
 
 [node name="Hammer" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.175229, 0.984528, 0, -0.984528, 0.175229, 0, 0, 0)
-mass = 10.0
-center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0.6, 0)
-metadata/_edit_group_ = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mass = 100.0
+script = ExtResource("1_s04du")
+sounds = SubResource("AudioStreamRandomizer_hlda8")
+metadata/_custom_type_script = "uid://dno3ql7sfflt0"
 
 [node name="Hammer_0" parent="." instance=ExtResource("2_xnrnd")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.169434, 0)
-shape = SubResource("CylinderShape3D_j17yc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162476, 0)
+shape = SubResource("CylinderShape3D_6kdac")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0682027, 1.07248, 0)
-shape = SubResource("CylinderShape3D_ri5n3")
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0719838, 1.05352, 0)
+shape = SubResource("CylinderShape3D_enspb")

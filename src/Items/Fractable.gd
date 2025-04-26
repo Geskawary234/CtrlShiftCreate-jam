@@ -4,6 +4,8 @@ class_name Fractable
 
 @export var fractured : PackedScene
 
+@export var stream_on_fracture : AudioStream
+
 func _ready() -> void:
 	super._ready()
 	contact_monitor = true
@@ -11,8 +13,7 @@ func _ready() -> void:
 	body_entered.connect(hit)
 
 func hit(other):
-	if other is Convoyer or other is Mouse_col:
-		fracture(5)
+	pass
 
 func fracture(power : int = 0):
 	freeze = true
@@ -32,6 +33,7 @@ func fracture(power : int = 0):
 			
 			
 			var r = RigidBody3D.new()
+			r.continuous_cd = true
 			r.set_script(preload('res://src/Items/Shard.gd'))
 			r.add_collision_exception_with(get_tree().current_scene.mouse)
 			r.add_child(col)
@@ -43,5 +45,13 @@ func fracture(power : int = 0):
 			model.add_child(r)
 			
 			i.reparent(r)
+	
+	if stream_on_fracture != null:
+		var aud = AudioStreamPlayer3D.new()
+		aud.stream = stream_on_fracture
+		
+		model.add_child(aud)
+		aud.play()
+	
 	
 	queue_free()

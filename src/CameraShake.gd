@@ -9,17 +9,16 @@ var initial_position : Vector3
 
 func _ready():
 	initial_position = position # Store the initial world position
-	
 	shake()
 
 # Call this function to initiate the shake
 func shake():
 	current_shake_duration = shake_duration
 	
+@onready var look_at_pos : Vector3 = %Mouse.global_position
 func _process(delta):
-	look_at(get_parent().mouse.global_position)
-	
-	
+	look_at(look_at_pos)
+	look_at_pos = look_at_pos.move_toward(lerp(look_at_pos,%Mouse.global_position,0.01),delta*5)
 	
 	if current_shake_duration > 0:
 		# Generate random shake offset on x and y axes only
