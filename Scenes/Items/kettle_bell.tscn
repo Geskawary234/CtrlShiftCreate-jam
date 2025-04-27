@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn7a6lyuxxuem"]
+
+[ext_resource type="Script" uid="uid://gkrmj4q4kbae" path="res://src/Items/HeavyItem.gd" id="1_musma"]
+[ext_resource type="PackedScene" uid="uid://dmgiqwiltr3n7" path="res://Assets/Models/Kettle bell/kettle_bell.glb" id="2_0j5pw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wwy8b"]
+radius = 0.961726
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kuvna"]
+height = 0.324219
+radius = 1.01611
+
+[node name="kettle_bell" type="RigidBody3D"]
+mass = 20.0
+script = ExtResource("1_musma")
+metadata/_custom_type_script = "uid://gkrmj4q4kbae"
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_0j5pw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826786, 0)
+shape = SubResource("SphereShape3D_wwy8b")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.85568, 0)
+shape = SubResource("CylinderShape3D_kuvna")

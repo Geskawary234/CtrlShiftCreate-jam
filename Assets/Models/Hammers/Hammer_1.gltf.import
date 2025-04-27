@@ -32,6 +32,17 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"wire_008061138.002": {
+"use_external/enabled": true,
+"use_external/path": "uid://bdeq4pxslm6vr"
+},
+"wire_224086086.002": {
+"use_external/enabled": true,
+"use_external/path": "uid://ba6tnfutk1ro6"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

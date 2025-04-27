@@ -5,7 +5,6 @@ extends Area3D
 
 var objects : Array[PackedScene] = [
 	preload('res://Scenes/Items/bottle.tscn'),
-	preload('res://Scenes/Items/hammer.tscn'),
 	preload('res://Scenes/Items/powerups/cheese.tscn'),
 	preload('res://Scenes/Items/axe.tscn'),
 	preload('res://Scenes/Items/dumbbel.tscn'),
@@ -14,7 +13,10 @@ var objects : Array[PackedScene] = [
 	preload('res://Scenes/Items/toster.tscn'),
 	preload('res://Scenes/Items/wrench.tscn'),
 	preload("res://Scenes/Items/heater.tscn"),
-	preload('res://Scenes/Items/crowbar.tscn')
+	preload('res://Scenes/Items/crowbar.tscn'),
+	preload('res://Scenes/Items/safe.tscn'),
+	preload('res://Scenes/Items/kettle_bell.tscn'),
+	preload('res://Scenes/Items/anvil.tscn')
 ]
 
 var t : float = 0

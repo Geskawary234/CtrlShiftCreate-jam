@@ -9,4 +9,5 @@ func _ready() -> void:
 	t.parallel().tween_property($Retry,'modulate',Color(1,1,1,1),1)
 
 func _on_retry_pressed() -> void:
+	Global.score = 0
 	get_tree().change_scene_to_file('res://Scenes/Game.tscn')

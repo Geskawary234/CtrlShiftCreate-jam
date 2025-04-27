@@ -36,10 +36,12 @@ func hit(other):
 		if other is Powerup:
 			return
 		
-		if other is RigidBody3D:
+		if other is Item:
 			health -= 5
 			mouse_model.take_damage()
 			hit_cooldown = 1
+		if other is HeavyItem:
+			health = 0
 		elif other is Shard:
 			health -= 1
 			mouse_model.take_damage()

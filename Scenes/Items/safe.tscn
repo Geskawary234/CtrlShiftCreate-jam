@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://f26slyru0r74"]
+
+[ext_resource type="Script" uid="uid://gkrmj4q4kbae" path="res://src/Items/HeavyItem.gd" id="1_l6nl6"]
+[ext_resource type="PackedScene" uid="uid://qbsl4j7ope4i" path="res://Assets/Models/safe/safe.glb" id="2_ghytc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n7o0f"]
+size = Vector3(1.66821, 2.00589, 1.80237)
+
+[node name="Safe" type="RigidBody3D"]
+mass = 40.0
+script = ExtResource("1_l6nl6")
+metadata/_custom_type_script = "uid://gkrmj4q4kbae"
+
+[node name="safe" parent="." instance=ExtResource("2_ghytc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147034, 0, -0.165565)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163696, -0.0272369, -0.180359)
+shape = SubResource("BoxShape3D_n7o0f")

@@ -70,7 +70,7 @@ script = ExtResource("1_2irst")
 [node name="BgMusic" type="AudioStreamPlayer" parent="Game"]
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_4q8tf")
-volume_db = -10.0
+volume_db = 7.0
 script = ExtResource("1_fgofq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Game"]
@@ -155,7 +155,7 @@ horizontal_alignment = 2
 
 [node name="Mouse" parent="Game" instance=ExtResource("3_b2bpf")]
 unique_name_in_owner = true
-transform = Transform3D(-0.064515, 0, -0.997917, 0, 1, 0, 0.997917, 0, -0.064515, 23.5897, 23.264, -5.46594)
+transform = Transform3D(0.997917, 0, -0.064515, 0, 1, 0, 0.064515, 0, 0.997917, 27.3697, 17.9262, -5.46594)
 
 [node name="KillArea" type="Area3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015552, 0)
@@ -177,7 +177,7 @@ shape = SubResource("BoxShape3D_7lihs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9187, 6.83421, 0)
 constant_linear_velocity = Vector3(-5, 0, 0)
 script = ExtResource("8_bf53h")
-speed = 5.0
+speed = 2.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Convoyer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133301, -2.29482, -5.31929)
