@@ -14,12 +14,17 @@ func _ready():
 # Call this function to initiate the shake
 func shake():
 	current_shake_duration = shake_duration
-	
-@onready var look_at_pos : Vector3 = %Mouse.global_position
+
+@export var tracking_player : bool = false
+var look_at_pos : Vector3
 func _process(delta):
-	look_at(look_at_pos)
-	look_at_pos = look_at_pos.move_toward(lerp(look_at_pos,%Mouse.global_position,0.01),delta*5)
-	
+	if tracking_player:
+		if !look_at_pos:
+			look_at_pos = %Mouse.global_position
+		
+		look_at(look_at_pos)
+		look_at_pos = look_at_pos.move_toward(lerp(look_at_pos,%Mouse.global_position,0.01),delta*5)
+		
 	if current_shake_duration > 0:
 		# Generate random shake offset on x and y axes only
 		var x_offset = randf_range(-1.0, 1.0) * shake_magnitude

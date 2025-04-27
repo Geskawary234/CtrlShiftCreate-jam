@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bribwebwk37rn"]
 
-[ext_resource type="Script" uid="uid://ymgo26vkrwkx" path="res://Scenes/Items/hammer.gd" id="1_s04du"]
+[ext_resource type="Script" uid="uid://ymgo26vkrwkx" path="res://src/Items/Item_sound_on_fall.gd" id="1_s04du"]
 [ext_resource type="AudioStream" uid="uid://i5t5aldy1trt" path="res://Assets/Sounds/hammer/hammer_falling1.mp3" id="2_6kdac"]
 [ext_resource type="PackedScene" uid="uid://btxp17suv2ucx" path="res://Assets/Models/Hammers/Hammer_0.glb" id="2_xnrnd"]
 [ext_resource type="AudioStream" uid="uid://dp72f2vptj1kc" path="res://Assets/Sounds/hammer/hammer_falling2.mp3" id="3_enspb"]
@@ -22,7 +22,6 @@ height = 0.494873
 radius = 0.107422
 
 [node name="Hammer" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mass = 100.0
 script = ExtResource("1_s04du")
 sounds = SubResource("AudioStreamRandomizer_hlda8")

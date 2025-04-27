@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="CtrlSihftCreate jam"
-run/main_scene="uid://k0l71fhl3udx"
+run/main_scene="uid://i1tqo876k4ed"
 config/features=PackedStringArray("4.4", "Forward Plus")
+
+[autoload]
+
+Global="*res://Global.gd"
 
 [file_customization]
 

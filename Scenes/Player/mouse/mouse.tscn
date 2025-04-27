@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd7louxexvwd1"]
+
+[ext_resource type="Script" uid="uid://bi1y80ffwxwf0" path="res://Scenes/Player/mouse/mouse.gd" id="1_upiut"]
+[ext_resource type="Script" uid="uid://i5f86ompopxc" path="res://Scenes/Player/mouse/player_physical_collider.gd" id="2_3xyak"]
+[ext_resource type="PackedScene" uid="uid://cwcdefovm3e74" path="res://Scenes/Player/mouse/Mouse_model.tscn" id="3_8hmt5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpibb"]
+size = Vector3(1.4541, 0.486816, 0.344727)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j17yc"]
+size = Vector3(1.51172, 0.516113, 0.376953)
+
+[node name="Mouse" type="CharacterBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_upiut")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.371216, -0.256592, 0)
+shape = SubResource("BoxShape3D_tpibb")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+top_level = true
+mass = 25.0
+script = ExtResource("2_3xyak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358887, -0.257568, 2.38419e-07)
+shape = SubResource("BoxShape3D_j17yc")
+debug_color = Color(0.810675, 0, 0.149749, 0.42)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../RigidBody3D")
+update_scale = false
+
+[node name="Mouse" parent="." instance=ExtResource("3_8hmt5")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.486589, 0)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://du6hri4pixgfs"]
+[gd_scene load_steps=3 format=3 uid="uid://du6hri4pixgfs"]
 
 [ext_resource type="Script" uid="uid://cl27s5og0ob1t" path="res://src/ui/died_menu.gd" id="1_rrwcy"]
+[ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="1_trrig"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,18 +10,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_trrig")
 script = ExtResource("1_rrwcy")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.215902, 0.215902, 0.215902, 1)
-
 [node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,9 +28,9 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 41
-text = "You died!"
 
 [node name="Retry" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

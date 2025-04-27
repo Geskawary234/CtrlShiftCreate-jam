@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://didxdy802nros"
+path="res://.godot/imported/toster_Все предметы_Material_Normal.png-6640ca89d390a7991edb4d5e160807cf.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "554f5510d4f74ec51fe63bc89127e4b3"
+}
+
+[deps]
+
+source_file="res://Assets/Models/toster/toster_Все предметы_Material_Normal.png"
+dest_files=["res://.godot/imported/toster_Все предметы_Material_Normal.png-6640ca89d390a7991edb4d5e160807cf.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Assets/Models/toster/toster_Все предметы_Material_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

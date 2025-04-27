@@ -1,2 +1,2 @@
-extends Item
+extends ItemSound
 class_name HeavyItem

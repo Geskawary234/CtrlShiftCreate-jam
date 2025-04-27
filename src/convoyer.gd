@@ -3,7 +3,7 @@ class_name Convoyer
 
 @export var speed : float
 
-@onready var conv_mesh: MeshInstance3D = $MeshInstance3D
+@onready var conv_mesh: MeshInstance3D = $"../Map/Cube_009"
 
 
 func _ready() -> void:
@@ -11,4 +11,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mat = conv_mesh.mesh.surface_get_material(0)
-	mat.uv1_offset.x += delta * speed/5
+	mat.uv1_offset.x += delta * speed * 2.6

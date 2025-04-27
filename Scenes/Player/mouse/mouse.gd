@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+var SPEED = 5.0
+var JUMP_VELOCITY = 4.5
 
 @onready var cam: Camera3D = $"../Camera3D"
 @onready var physical_col: RigidBody3D = $RigidBody3D
@@ -33,6 +33,9 @@ var health : float = 25
 var hit_cooldown : float = 0
 func hit(other):
 	if hit_cooldown<=0:
+		if other is Powerup:
+			return
+		
 		if other is RigidBody3D:
 			health -= 5
 			mouse_model.take_damage()
@@ -42,12 +45,12 @@ func hit(other):
 			mouse_model.take_damage()
 			hit_cooldown = 1
 		
-		if health<=0:
-			await get_tree().create_timer(0.5).timeout
-			get_tree().change_scene_to_file('res://ui/died_menu.tscn')
+		
+			#await get_tree().create_timer(0.5).timeout
+			#get_tree().change_scene_to_file('res://ui/died_menu.tscn')
 		
 		
-		health_bar.value = 100*(health/25)
+		
 
 
 @onready var mouse_model: Node3D = $Mouse
@@ -84,10 +87,27 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	score_lab.text = 'Счет: '+str(get_tree().current_scene.score)
+	health_bar.value = 100*(health/25)
+	score_lab.text = 'Score: '+str(Global.score)
+#	score_lab.text = 'Счет: '+str(get_tree().current_scene.score)
 	
 	if hit_cooldown>0:
 		hit_cooldown -= delta
+	
+	
+	if health<=0:
+		var mdl = preload('res://Scenes/Player/mouse/fractured_mouse.tscn').instantiate()
+		get_parent().add_child(mdl)
+		mdl.global_position = global_position
+		mdl.global_rotation = global_rotation
+		$"../Camera3D/Control".hide()
+		hide()
+		
+		var dead_scr = preload('res://ui/died_menu.tscn').instantiate()
+		cam.add_child(dead_scr)
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		set_process(false)
+		set_physics_process(false)
 	
 	
 	

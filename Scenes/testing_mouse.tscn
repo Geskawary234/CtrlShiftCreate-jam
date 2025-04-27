@@ -39,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0646037, 0.067375, -1.15579)
 
 [node name="Hammer" parent="." instance=ExtResource("2_68ioa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07079, 1.84111, -0.357608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.466292, 1.84111, -0.808109)
 mass = 1.0
 
 [node name="Hammer2" parent="." instance=ExtResource("2_68ioa")]

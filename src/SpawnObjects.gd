@@ -3,7 +3,8 @@ extends Node3D
 
 var objects : Array[PackedScene] = [
 	preload('res://Scenes/Items/bottle.tscn'),
-	preload('res://Scenes/Items/hammer.tscn')
+	preload('res://Scenes/Items/hammer.tscn'),
+	preload('res://Scenes/Items/powerups/cheese.tscn')
 ]
 
 var score : int = 0

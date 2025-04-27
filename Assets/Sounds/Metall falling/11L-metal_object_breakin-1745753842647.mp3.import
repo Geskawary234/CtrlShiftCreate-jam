@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbf7tjqx2kw1k"
+path="res://.godot/imported/11L-metal_object_breakin-1745753842647.mp3-eb3a709f6760549e382227a3a8a8d881.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753842647.mp3"
+dest_files=["res://.godot/imported/11L-metal_object_breakin-1745753842647.mp3-eb3a709f6760549e382227a3a8a8d881.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

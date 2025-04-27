@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://1o3ib2kq4myp"]
+
+[ext_resource type="Script" uid="uid://ckaq0h45apmlj" path="res://src/Items/fractable_schredder_destroyable.gd" id="1_ae4px"]
+[ext_resource type="PackedScene" uid="uid://b45yehlqjf3e1" path="res://Assets/Models/gear/gear_fractured.glb" id="2_uk2bn"]
+[ext_resource type="PackedScene" uid="uid://b81gims7c3nm1" path="res://Assets/Models/gear/gear.glb" id="3_rjq0k"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hgr0t"]
+height = 0.238525
+radius = 1.24219
+
+[node name="Gear" type="RigidBody3D"]
+script = ExtResource("1_ae4px")
+fractured = ExtResource("2_uk2bn")
+metadata/_custom_type_script = "uid://dcrxceryjlej4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000366211, 0)
+shape = SubResource("CylinderShape3D_hgr0t")
+
+[node name="gear" parent="." instance=ExtResource("3_rjq0k")]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqcq8of2hwccd"]
+
+[ext_resource type="Script" uid="uid://ckaq0h45apmlj" path="res://src/Items/fractable_schredder_destroyable.gd" id="1_omf50"]
+[ext_resource type="PackedScene" uid="uid://weu8a646grs0" path="res://Assets/Models/toster/toster_fractured.glb" id="2_rwskk"]
+[ext_resource type="AudioStream" uid="uid://o8pm0ctimhg0" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753839264.mp3" id="3_dsfaq"]
+[ext_resource type="PackedScene" uid="uid://dtejue6pjufv8" path="res://Assets/Models/toster/toster.glb" id="3_fk8d6"]
+[ext_resource type="AudioStream" uid="uid://baso15ag6rwbf" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753841103.mp3" id="4_no6w3"]
+[ext_resource type="AudioStream" uid="uid://cbf7tjqx2kw1k" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753842647.mp3" id="5_65ibs"]
+[ext_resource type="AudioStream" uid="uid://ce4pa2s77jcc6" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753844072.mp3" id="6_rc563"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ny5nd"]
+streams_count = 4
+stream_0/stream = ExtResource("3_dsfaq")
+stream_1/stream = ExtResource("4_no6w3")
+stream_2/stream = ExtResource("5_65ibs")
+stream_3/stream = ExtResource("6_rc563")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nomga"]
+size = Vector3(1.3783, 1.69653, 3.07422)
+
+[node name="Toster" type="RigidBody3D"]
+script = ExtResource("1_omf50")
+fractured = ExtResource("2_rwskk")
+stream_on_fracture = SubResource("AudioStreamRandomizer_ny5nd")
+metadata/_custom_type_script = "uid://ckaq0h45apmlj"
+
+[node name="toster" parent="." instance=ExtResource("3_fk8d6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00408936, -0.024292, 0.728516)
+shape = SubResource("BoxShape3D_nomga")

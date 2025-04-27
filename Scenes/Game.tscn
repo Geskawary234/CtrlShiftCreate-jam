@@ -1,0 +1,199 @@
+[gd_scene load_steps=29 format=3 uid="uid://desjbouoobjtk"]
+
+[ext_resource type="Script" uid="uid://twwfja083yu4" path="res://src/game.gd" id="1_2irst"]
+[ext_resource type="Script" uid="uid://bk836ydgmot8x" path="res://src/PuseManager.gd" id="1_71axn"]
+[ext_resource type="Script" uid="uid://b7lx26gveo3b7" path="res://src/bg_music.gd" id="1_fgofq"]
+[ext_resource type="PackedScene" uid="uid://de51skobp2ife" path="res://Scenes/map.tscn" id="1_j5yw3"]
+[ext_resource type="Script" uid="uid://cfvx8p77l1vsk" path="res://src/CameraShake.gd" id="2_kldst"]
+[ext_resource type="PackedScene" uid="uid://bd7louxexvwd1" path="res://Scenes/Player/mouse/mouse.tscn" id="3_b2bpf"]
+[ext_resource type="AudioStream" uid="uid://cawmpoaks4aci" path="res://Assets/Music/In the metal city of the metal country.mp3" id="3_wxwew"]
+[ext_resource type="AudioStream" uid="uid://jjqqn6dm2g4n" path="res://Assets/Music/NO ESCAPE............LITTLE MOUSE........mp3" id="4_acvyw"]
+[ext_resource type="Script" uid="uid://2sf5rsidmkgc" path="res://src/kill_area.gd" id="4_kldst"]
+[ext_resource type="AudioStream" uid="uid://coiinjoi20l2c" path="res://Assets/Music/YOU......YOU WHO LIVE........IN THE WORL (1).mp3" id="5_alh3a"]
+[ext_resource type="Script" uid="uid://f5rpysrih22s" path="res://src/Items/spawn_items_area.gd" id="5_b2bpf"]
+[ext_resource type="Script" uid="uid://bxomda46m28y8" path="res://src/shredder.gd" id="6_7lihs"]
+[ext_resource type="PackedScene" uid="uid://q3ru6gbcmv2g" path="res://ui/pause_menu.tscn" id="6_dahhg"]
+[ext_resource type="Script" uid="uid://blfv7vqnici02" path="res://src/convoyer.gd" id="8_bf53h"]
+[ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="10_acvyw"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4q8tf"]
+streams_count = 3
+stream_0/stream = ExtResource("3_wxwew")
+stream_1/stream = ExtResource("4_acvyw")
+stream_2/stream = ExtResource("5_alh3a")
+
+[sub_resource type="Environment" id="Environment_7lihs"]
+tonemap_exposure = 0.7
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kldst"]
+size = Vector3(1, 29.3296, 44.2146)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2irst"]
+size = Vector3(45.0516, 6.43665, 2.47278)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71axn"]
+size = Vector3(25.0774, 11.7617, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dahhg"]
+size = Vector3(49.733, 11.7617, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bf53h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2irst"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf53h"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2bpf"]
+size = Vector3(158.695, 5.45801, 110.084)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7lihs"]
+size = Vector3(12.4735, 1, 14.0887)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgofq"]
+size = Vector3(15.6348, 1, 14.9102)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bf53h"]
+size = Vector3(8.66443, 1.94775, 12.7143)
+
+[node name="Manager" type="Node"]
+process_mode = 3
+script = ExtResource("1_71axn")
+
+[node name="Game" type="Node3D" parent="."]
+process_mode = 1
+script = ExtResource("1_2irst")
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="Game"]
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_4q8tf")
+volume_db = -10.0
+script = ExtResource("1_fgofq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Game"]
+environment = SubResource("Environment_7lihs")
+
+[node name="Map" parent="Game" instance=ExtResource("1_j5yw3")]
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Game/Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4265, 0, -23.0041)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+transform = Transform3D(0.945751, 0.324891, 0, -0.324891, 0.945751, 0, 0, 0, 1, 14.601, 24.4847, 8.46805)
+shape = SubResource("BoxShape3D_kldst")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.648, 10.9375, 29.6762)
+shape = SubResource("BoxShape3D_2irst")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.648, 10.9375, -12.6528)
+shape = SubResource("BoxShape3D_2irst")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.847409, -0.53094, 0, 0.53094, 0.847409, -44.8108, 11.8177, 29.823)
+shape = SubResource("BoxShape3D_71axn")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+transform = Transform3D(-1, -4.64163e-08, -7.40828e-08, 0, 0.847409, -0.53094, 8.74228e-08, -0.53094, -0.847409, -44.8108, 11.8177, -12.9057)
+shape = SubResource("BoxShape3D_71axn")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+transform = Transform3D(1.31134e-07, -0.53094, -0.847409, 2.43336e-15, 0.847409, -0.53094, 1, 6.96244e-08, 1.11124e-07, -57.1197, 11.8177, 8.44535)
+shape = SubResource("BoxShape3D_dahhg")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5091, -28.3373, 38.067)
+shape = SubResource("WorldBoundaryShape3D_bf53h")
+
+[node name="Camera3D" type="Camera3D" parent="Game"]
+transform = Transform3D(0.781494, -0.284955, 0.555039, -0.0119796, 0.882592, 0.469987, -0.623798, -0.373941, 0.686327, 31.8019, 15.9612, 8.09093)
+current = true
+fov = 44.3
+script = ExtResource("2_kldst")
+shake_duration = 0.0
+shake_fade_out_speed = 0.5
+tracking_player = true
+
+[node name="PauseMenu" parent="Game/Camera3D" instance=ExtResource("6_dahhg")]
+process_mode = 2
+visible = false
+theme = ExtResource("10_acvyw")
+
+[node name="Control" type="Control" parent="Game/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_acvyw")
+
+[node name="ProgressBar" type="ProgressBar" parent="Game/Camera3D/Control"]
+layout_mode = 0
+offset_right = 203.0
+offset_bottom = 36.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2irst")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bf53h")
+value = 100.0
+show_percentage = false
+
+[node name="Score" type="Label" parent="Game/Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -301.0
+offset_bottom = 136.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 51
+horizontal_alignment = 2
+
+[node name="Mouse" parent="Game" instance=ExtResource("3_b2bpf")]
+unique_name_in_owner = true
+transform = Transform3D(-0.064515, 0, -0.997917, 0, 1, 0, 0.997917, 0, -0.064515, 23.5897, 23.264, -5.46594)
+
+[node name="KillArea" type="Area3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015552, 0)
+script = ExtResource("4_kldst")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/KillArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.594, -11.3478, 0)
+shape = SubResource("BoxShape3D_b2bpf")
+
+[node name="SpawnItemsArea" type="Area3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6997, 15.8337, -5.08699)
+script = ExtResource("5_b2bpf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/SpawnItemsArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457376, 4.93042, 0.99189)
+shape = SubResource("BoxShape3D_7lihs")
+
+[node name="Convoyer" type="StaticBody3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9187, 6.83421, 0)
+constant_linear_velocity = Vector3(-5, 0, 0)
+script = ExtResource("8_bf53h")
+speed = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Convoyer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133301, -2.29482, -5.31929)
+shape = SubResource("BoxShape3D_fgofq")
+
+[node name="Schredder" type="Area3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9588, 5.7895, 0)
+script = ExtResource("6_7lihs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Schredder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112488, -2.72486, -5.0809)
+shape = SubResource("BoxShape3D_bf53h")
+debug_color = Color(0.977675, 0, 0.402249, 0.42)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.607833, 0.389121, -0.692188, 1.49012e-08, 0.871702, 0.490037, 0.794065, -0.297861, 0.529849, 7.58759, 11.336, 5.75128)
+light_energy = 44.74
+shadow_enabled = true
+spot_range = 51.5012

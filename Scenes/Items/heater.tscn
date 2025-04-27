@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cek88norj8rjk"]
+
+[ext_resource type="Script" uid="uid://gkrmj4q4kbae" path="res://src/Items/HeavyItem.gd" id="1_xsk86"]
+[ext_resource type="PackedScene" uid="uid://bl7ou1j6swe78" path="res://Assets/Models/heater/heater.glb" id="2_mxvgu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x2x2q"]
+size = Vector3(5.74805, 5.22388, 1.39954)
+
+[node name="Heater" type="RigidBody3D"]
+script = ExtResource("1_xsk86")
+metadata/_custom_type_script = "uid://gkrmj4q4kbae"
+
+[node name="heater" parent="." instance=ExtResource("2_mxvgu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0102539, -0.00775146)
+shape = SubResource("BoxShape3D_x2x2q")

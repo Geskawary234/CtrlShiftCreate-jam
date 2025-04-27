@@ -1,0 +1,2 @@
+extends Fractable
+class_name Fractable_destroyable_by_schredder

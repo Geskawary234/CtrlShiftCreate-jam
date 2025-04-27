@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://sfmbtrfmu18j"]
+
+[ext_resource type="PackedScene" uid="uid://hdtpxghfxiqw" path="res://Assets/Models/Player_mouse/fractured_mouse.glb" id="1_rksbh"]
+[ext_resource type="Script" uid="uid://b23n05s2ws7r1" path="res://src/player/fractured_mouse.gd" id="2_v3rwd"]
+[ext_resource type="Material" uid="uid://bb60xusxnsj08" path="res://Assets/Materials/mouse_skin.tres" id="3_fgdin"]
+[ext_resource type="AudioStream" uid="uid://cxapav2b80lqb" path="res://Assets/Sounds/Mouse/Die/11L-gory_blood_explosion-1745749058004.mp3" id="4_pdiwh"]
+[ext_resource type="AudioStream" uid="uid://bi0wrdfudcp3e" path="res://Assets/Sounds/Mouse/Die/11L-gory_blood_explosion-1745749060003.mp3" id="5_usoks"]
+[ext_resource type="AudioStream" uid="uid://bk6d8d3n7ywj0" path="res://Assets/Sounds/Mouse/Die/11L-gory_blood_explosion-1745749061617.mp3" id="6_y1w12"]
+[ext_resource type="AudioStream" uid="uid://b3ibaygkdfn56" path="res://Assets/Sounds/Mouse/Die/11L-gory_blood_explosion-1745749063020.mp3" id="7_uwyi2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fgdin"]
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 10.0
+scale_min = 0.1
+scale_max = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rksbh"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 0.52
+roughness = 0.0
+billboard_mode = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_v3rwd"]
+material = SubResource("StandardMaterial3D_rksbh")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fgdin"]
+material = SubResource("StandardMaterial3D_rksbh")
+size = Vector2(0.1, 0.1)
+orientation = 2
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ib7eg"]
+streams_count = 4
+stream_0/stream = ExtResource("4_pdiwh")
+stream_1/stream = ExtResource("5_usoks")
+stream_2/stream = ExtResource("6_y1w12")
+stream_3/stream = ExtResource("7_uwyi2")
+
+[node name="fractured_mouse" instance=ExtResource("1_rksbh")]
+script = ExtResource("2_v3rwd")
+
+[node name="Container" type="Node3D" parent="." index="0"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Container" index="0"]
+emitting = false
+amount = 256
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fgdin")
+draw_pass_1 = SubResource("SphereMesh_v3rwd")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Container" index="1"]
+emitting = false
+amount = 512
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fgdin")
+draw_pass_1 = SubResource("PlaneMesh_fgdin")
+
+[node name="mouse_cell" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_001" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_002" parent="." index="5"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_003" parent="." index="6"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_004" parent="." index="7"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_005" parent="." index="8"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_006" parent="." index="9"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_007" parent="." index="10"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_008" parent="." index="11"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="mouse_cell_009" parent="." index="12"]
+surface_material_override/0 = ExtResource("3_fgdin")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="13"]
+stream = SubResource("AudioStreamRandomizer_ib7eg")

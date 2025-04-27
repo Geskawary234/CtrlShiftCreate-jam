@@ -35,7 +35,7 @@ func fracture(power : int = 0):
 			var r = RigidBody3D.new()
 			r.continuous_cd = true
 			r.set_script(preload('res://src/Items/Shard.gd'))
-			r.add_collision_exception_with(get_tree().current_scene.mouse)
+			r.add_collision_exception_with(mouse)
 			r.add_child(col)
 			r.position = i.position
 			r.linear_velocity = linear_velocity + r.position

@@ -1,11 +1,12 @@
 @tool 
 extends Area3D
 
+@onready var col: CollisionShape3D = $CollisionShape3D
 @export var blast_radius : float = 1:
 	set(val):
 		blast_radius = val
-		if is_instance_valid($CollisionShape3D):
-			$CollisionShape3D.shape.radius = blast_radius
+		if is_instance_valid(col):
+			col.shape.radius = blast_radius
 		
 @onready var shockwave: MeshInstance3D = $MeshInstance3D
 @export_color_no_alpha var shockwave_color :

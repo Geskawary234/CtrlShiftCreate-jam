@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://i1tqo876k4ed"]
+[gd_scene load_steps=5 format=3 uid="uid://i1tqo876k4ed"]
 
 [ext_resource type="Script" uid="uid://b8dmkc0i2go0q" path="res://src/ui/mainmenu.gd" id="1_1ygym"]
-
-[sub_resource type="Theme" id="Theme_oa6o1"]
-default_font_size = 40
+[ext_resource type="VideoStream" uid="uid://deqtug847edwi" path="res://Assets/video/bg.ogv" id="2_jt4pq"]
+[ext_resource type="AudioStream" uid="uid://lrukmfs3e533" path="res://Assets/OtherMusic/MOUSE..........PULLS..RADIATOR...........mp3" id="2_q7r84"]
+[ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="3_souqr"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,6 +14,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ygym")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_jt4pq")
+autoplay = true
+expand = true
+loop = true
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -23,8 +35,9 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme = ExtResource("3_souqr")
 theme_override_font_sizes/font_size = 71
-text = "Game name"
+text = "Metal Madness Machine"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,17 +54,17 @@ alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_oa6o1")
+theme = ExtResource("3_souqr")
 text = "Play"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_oa6o1")
+theme = ExtResource("3_souqr")
 text = "Exit"
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
-layout_mode = 2
-text = "Music"
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q7r84")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

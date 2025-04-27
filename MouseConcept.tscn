@@ -1,11 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://bcsu46qdkbwqx"]
+[gd_scene load_steps=22 format=3 uid="uid://bcsu46qdkbwqx"]
 
 [ext_resource type="Script" uid="uid://cfvx8p77l1vsk" path="res://src/CameraShake.gd" id="1_8jqmo"]
 [ext_resource type="Script" uid="uid://gkhxx3m1axgm" path="res://src/SpawnObjects.gd" id="1_gbajg"]
-[ext_resource type="Script" uid="uid://bi1y80ffwxwf0" path="res://Scenes/Player/mouse/mouse.gd" id="1_tpibb"]
 [ext_resource type="Script" uid="uid://b7lx26gveo3b7" path="res://src/bg_music.gd" id="3_hlbib"]
-[ext_resource type="Script" uid="uid://i5f86ompopxc" path="res://Scenes/Player/mouse/player_physical_collider.gd" id="4_ri5n3"]
-[ext_resource type="PackedScene" uid="uid://cwcdefovm3e74" path="res://Scenes/Player/mouse/Mouse_model.tscn" id="5_pds5r"]
+[ext_resource type="PackedScene" uid="uid://bd7louxexvwd1" path="res://Scenes/Player/mouse/mouse.tscn" id="4_ri5n3"]
 [ext_resource type="Script" uid="uid://blfv7vqnici02" path="res://src/convoyer.gd" id="6_j17yc"]
 [ext_resource type="Texture2D" uid="uid://d0d5dgwqt5h34" path="res://Assets/Textures/convoyer-belt.jpg" id="7_ri5n3"]
 [ext_resource type="Script" uid="uid://bxomda46m28y8" path="res://src/shredder.gd" id="8_pds5r"]
@@ -19,17 +17,6 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri5n3"]
 bg_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tpibb"]
-size = Vector3(1.4541, 0.486816, 0.344727)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j17yc"]
-size = Vector3(1.51172, 0.516113, 0.376953)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j17yc"]
-friction = 0.0
-rough = true
-absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8jqmo"]
 size = Vector3(23.125, 1, 20)
@@ -102,7 +89,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9447, 3.52062, -7.61834)
 environment = SubResource("Environment_dsabm")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.22181, 1.64918e-07)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.53674e-07, 4.75677, -1.50443)
+light_energy = 4.192
+shadow_enabled = true
+shadow_blur = 1.202
+spot_range = 129.05
+spot_angle = 80.5617
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -15, 4.75677, -1.50443)
 light_energy = 4.192
 shadow_enabled = true
 shadow_blur = 1.202
@@ -143,36 +138,9 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 51
 horizontal_alignment = 2
 
-[node name="Mouse" type="CharacterBody3D" parent="."]
+[node name="Mouse" parent="." instance=ExtResource("4_ri5n3")]
 unique_name_in_owner = true
 transform = Transform3D(-0.064515, 0, -0.997917, 0, 1, 0, 0.997917, 0, -0.064515, -7.92346, -3.51129, 0.198938)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-script = ExtResource("1_tpibb")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.371216, -0.256592, 0)
-shape = SubResource("BoxShape3D_tpibb")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Mouse"]
-transform = Transform3D(-0.064515, 0, -0.997917, 0, 1, 0, 0.997917, 0, -0.064515, -7.92346, -3.51129, 0.198938)
-top_level = true
-mass = 25.0
-script = ExtResource("4_ri5n3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mouse/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358887, -0.257568, 2.38419e-07)
-shape = SubResource("BoxShape3D_j17yc")
-debug_color = Color(0.810675, 0, 0.149749, 0.42)
-
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Mouse"]
-remote_path = NodePath("../RigidBody3D")
-update_scale = false
-
-[node name="Mouse" parent="Mouse" instance=ExtResource("5_pds5r")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.486589, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -203,7 +171,6 @@ size = Vector3(1.66064, 4.09827, 4.4624)
 
 [node name="Convoyer" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00379992, -4.97194, -2.73764)
-physics_material_override = SubResource("PhysicsMaterial_j17yc")
 script = ExtResource("6_j17yc")
 speed = 5.0
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://jjqqn6dm2g4n"
+path="res://.godot/imported/NO ESCAPE............LITTLE MOUSE........mp3-d1d662e25636b5ac1cfc674d8746e49e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/NO ESCAPE............LITTLE MOUSE........mp3"
+dest_files=["res://.godot/imported/NO ESCAPE............LITTLE MOUSE........mp3-d1d662e25636b5ac1cfc674d8746e49e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

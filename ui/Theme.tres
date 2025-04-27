@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://btpc1wj1yrnxe"]
+
+[ext_resource type="FontFile" uid="uid://rp3fsds6wd3a" path="res://Assets/MetalKingdom.ttf" id="1_e3d2j"]
+
+[resource]
+default_font = ExtResource("1_e3d2j")
+default_font_size = 40
