@@ -16,3 +16,7 @@ func _ready() -> void:
 	if randi_range(1,20)==1:
 		$VideoStreamPlayer.stream = preload('res://Assets/video/spinning_mouse.ogv')
 		$VideoStreamPlayer.play()
+
+
+func _on_toggle_sound_toggled(val: bool) -> void:
+	AudioServer.set_bus_mute(0,!val)

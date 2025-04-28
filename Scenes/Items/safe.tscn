@@ -1,7 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://f26slyru0r74"]
+[gd_scene load_steps=10 format=3 uid="uid://f26slyru0r74"]
 
-[ext_resource type="Script" uid="uid://gkrmj4q4kbae" path="res://src/Items/HeavyItem.gd" id="1_l6nl6"]
+[ext_resource type="Script" uid="uid://h6vdaunx2v3w" path="res://Scenes/Items/safe.gd" id="1_l6nl6"]
 [ext_resource type="PackedScene" uid="uid://qbsl4j7ope4i" path="res://Assets/Models/safe/safe.glb" id="2_ghytc"]
+[ext_resource type="PackedScene" uid="uid://b2kkbxthn1fei" path="res://Assets/Models/safe/safe_fracture.glb" id="2_n7o0f"]
+[ext_resource type="AudioStream" uid="uid://o8pm0ctimhg0" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753839264.mp3" id="2_vbl42"]
+[ext_resource type="AudioStream" uid="uid://baso15ag6rwbf" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753841103.mp3" id="3_y4v36"]
+[ext_resource type="AudioStream" uid="uid://cbf7tjqx2kw1k" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753842647.mp3" id="4_sp1d2"]
+[ext_resource type="AudioStream" uid="uid://ce4pa2s77jcc6" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753844072.mp3" id="5_rwv6y"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tky1a"]
+streams_count = 4
+stream_0/stream = ExtResource("2_vbl42")
+stream_1/stream = ExtResource("3_y4v36")
+stream_2/stream = ExtResource("4_sp1d2")
+stream_3/stream = ExtResource("5_rwv6y")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n7o0f"]
 size = Vector3(1.66821, 2.00589, 1.80237)
@@ -9,7 +21,9 @@ size = Vector3(1.66821, 2.00589, 1.80237)
 [node name="Safe" type="RigidBody3D"]
 mass = 40.0
 script = ExtResource("1_l6nl6")
-metadata/_custom_type_script = "uid://gkrmj4q4kbae"
+fractured = ExtResource("2_n7o0f")
+stream_on_fracture = SubResource("AudioStreamRandomizer_tky1a")
+metadata/_custom_type_script = "uid://dcrxceryjlej4"
 
 [node name="safe" parent="." instance=ExtResource("2_ghytc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147034, 0, -0.165565)

@@ -4,7 +4,7 @@ extends CharacterBody3D
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 
-@onready var cam: Camera3D = $"../Camera3D"
+@onready var cam: Camera3D = $"../CamPivot/Camera3D"
 @onready var physical_col: RigidBody3D = $RigidBody3D
 
 
@@ -25,8 +25,8 @@ func _process(delta: float) -> void:
 		else:
 			outline.hide()'''
 			
-@onready var health_bar: ProgressBar = $"../Camera3D/Control/ProgressBar"
-@onready var score_lab: Label = $"../Camera3D/Control/Score"
+@onready var health_bar: ProgressBar = $"../CamPivot/Camera3D/Control/ProgressBar"
+@onready var score_lab: Label = $"../CamPivot/Camera3D/Control/Score"
 
 
 var health : float = 25
@@ -102,7 +102,7 @@ func _process(delta: float) -> void:
 		get_parent().add_child(mdl)
 		mdl.global_position = global_position
 		mdl.global_rotation = global_rotation
-		$"../Camera3D/Control".hide()
+		cam.get_node('Control').hide()
 		hide()
 		
 		var dead_scr = preload('res://ui/died_menu.tscn').instantiate()

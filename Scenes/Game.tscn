@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://desjbouoobjtk"]
+[gd_scene load_steps=31 format=3 uid="uid://desjbouoobjtk"]
 
 [ext_resource type="Script" uid="uid://twwfja083yu4" path="res://src/game.gd" id="1_2irst"]
 [ext_resource type="Script" uid="uid://bk836ydgmot8x" path="res://src/PuseManager.gd" id="1_71axn"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://q3ru6gbcmv2g" path="res://ui/pause_menu.tscn" id="6_dahhg"]
 [ext_resource type="Script" uid="uid://blfv7vqnici02" path="res://src/convoyer.gd" id="8_bf53h"]
 [ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="10_acvyw"]
+[ext_resource type="Script" uid="uid://di3ri5yftboss" path="res://src/ui/tutorial.gd" id="11_4q8tf"]
+[ext_resource type="Texture2D" uid="uid://djsp1oliosnxu" path="res://Assets/Textures/blood_decal.png" id="16_alh3a"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4q8tf"]
 streams_count = 3
@@ -70,7 +72,6 @@ script = ExtResource("1_2irst")
 [node name="BgMusic" type="AudioStreamPlayer" parent="Game"]
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_4q8tf")
-volume_db = 7.0
 script = ExtResource("1_fgofq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Game"]
@@ -110,21 +111,30 @@ shape = SubResource("BoxShape3D_dahhg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5091, -28.3373, 38.067)
 shape = SubResource("WorldBoundaryShape3D_bf53h")
 
-[node name="Camera3D" type="Camera3D" parent="Game"]
-transform = Transform3D(0.781494, -0.284955, 0.555039, -0.0119796, 0.882592, 0.469987, -0.623798, -0.373941, 0.686327, 31.8019, 15.9612, 8.09093)
+[node name="SpotLight3D7" type="SpotLight3D" parent="Game/Map"]
+transform = Transform3D(1.6653, 1.06609, -1.8964, 4.08252e-08, 2.38822, 1.34257, 2.17552, -0.816056, 1.45164, 20.7879, 31.0575, 15.7569)
+light_energy = 44.74
+shadow_enabled = true
+spot_range = 51.5012
+
+[node name="CamPivot" type="Node3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8314, 4, -5.33556)
+
+[node name="Camera3D" type="Camera3D" parent="Game/CamPivot"]
+transform = Transform3D(0.852677, -0.169995, 0.494008, 0, 0.945581, 0.325387, -0.522439, -0.27745, 0.806275, 7.14477, 8.9441, 11.9304)
 current = true
-fov = 44.3
+fov = 58.5
 script = ExtResource("2_kldst")
 shake_duration = 0.0
-shake_fade_out_speed = 0.5
+shake_fade_out_speed = 0.25
 tracking_player = true
 
-[node name="PauseMenu" parent="Game/Camera3D" instance=ExtResource("6_dahhg")]
+[node name="PauseMenu" parent="Game/CamPivot/Camera3D" instance=ExtResource("6_dahhg")]
 process_mode = 2
 visible = false
 theme = ExtResource("10_acvyw")
 
-[node name="Control" type="Control" parent="Game/Camera3D"]
+[node name="Control" type="Control" parent="Game/CamPivot/Camera3D"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,7 +143,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("10_acvyw")
 
-[node name="ProgressBar" type="ProgressBar" parent="Game/Camera3D/Control"]
+[node name="ProgressBar" type="ProgressBar" parent="Game/CamPivot/Camera3D/Control"]
 layout_mode = 0
 offset_right = 203.0
 offset_bottom = 36.0
@@ -142,7 +152,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_bf53h")
 value = 100.0
 show_percentage = false
 
-[node name="Score" type="Label" parent="Game/Camera3D/Control"]
+[node name="Score" type="Label" parent="Game/CamPivot/Camera3D/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -153,9 +163,109 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 51
 horizontal_alignment = 2
 
+[node name="Tutorial" type="Control" parent="Game/CamPivot/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_acvyw")
+script = ExtResource("11_4q8tf")
+
+[node name="Label" type="Label" parent="Game/CamPivot/Camera3D/Tutorial"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -95.0
+offset_right = 251.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Use W/S to move
+Use A/D to turn"
+
+[node name="WS progress" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Label"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme = ExtResource("10_acvyw")
+show_percentage = false
+
+[node name="AD progress" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Label"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.516
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0200043
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("10_acvyw")
+show_percentage = false
+
+[node name="Use mouse to look around!" type="Label" parent="Game/CamPivot/Camera3D/Tutorial"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -291.5
+offset_top = -46.0
+offset_right = 291.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Use mouse to look around!"
+
+[node name="Mprog" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Use mouse to look around!"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_acvyw")
+show_percentage = false
+
+[node name="Use jump" type="Label" parent="Game/CamPivot/Camera3D/Tutorial"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -46.0
+offset_right = 213.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Use SPACE to jump!"
+
+[node name="jprog" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Use jump"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_acvyw")
+show_percentage = false
+
 [node name="Mouse" parent="Game" instance=ExtResource("3_b2bpf")]
 unique_name_in_owner = true
-transform = Transform3D(0.997917, 0, -0.064515, 0, 1, 0, 0.064515, 0, 0.997917, 27.3697, 17.9262, -5.46594)
+transform = Transform3D(0.997917, 0, -0.064515, 0, 1, 0, 0.064515, 0, 0.997917, 23.9156, 18.3147, -5.46594)
 
 [node name="KillArea" type="Area3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015552, 0)
@@ -175,9 +285,7 @@ shape = SubResource("BoxShape3D_7lihs")
 
 [node name="Convoyer" type="StaticBody3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9187, 6.83421, 0)
-constant_linear_velocity = Vector3(-5, 0, 0)
 script = ExtResource("8_bf53h")
-speed = 2.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Convoyer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133301, -2.29482, -5.31929)
@@ -192,8 +300,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112488, -2.72486, -5.0809)
 shape = SubResource("BoxShape3D_bf53h")
 debug_color = Color(0.977675, 0, 0.402249, 0.42)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.607833, 0.389121, -0.692188, 1.49012e-08, 0.871702, 0.490037, 0.794065, -0.297861, 0.529849, 7.58759, 11.336, 5.75128)
-light_energy = 44.74
-shadow_enabled = true
-spot_range = 51.5012
+[node name="Decal" type="Decal" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.5193, -12.1984, 7.29907)
+size = Vector3(5, 10, 5)
+texture_albedo = ExtResource("16_alh3a")

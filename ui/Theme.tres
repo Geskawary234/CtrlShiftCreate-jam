@@ -1,7 +1,14 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://btpc1wj1yrnxe"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://btpc1wj1yrnxe"]
 
 [ext_resource type="FontFile" uid="uid://rp3fsds6wd3a" path="res://Assets/MetalKingdom.ttf" id="1_e3d2j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3d2j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4rvt"]
+bg_color = Color(0.239049, 0.715969, 0, 1)
 
 [resource]
 default_font = ExtResource("1_e3d2j")
 default_font_size = 40
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_e3d2j")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_i4rvt")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://de51skobp2ife"]
+[gd_scene load_steps=15 format=4 uid="uid://de51skobp2ife"]
 
 [ext_resource type="PackedScene" uid="uid://c7t1m78n4ubpb" path="res://Assets/Models/Map/map.glb" id="1_ci6au"]
 [ext_resource type="Texture2D" uid="uid://b1dyaaidlpoik" path="res://Assets/Models/Map/Map_10280_autosave_Material.png" id="3_np2xp"]
@@ -120,6 +120,12 @@ _data = {
 &"schredder": SubResource("Animation_myvm1")
 }
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_myvm1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0mm3"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="map" instance=ExtResource("1_ci6au")]
 
 [node name="Schredder1" parent="." index="22"]
@@ -195,3 +201,8 @@ libraries = {
 }
 autoplay = "schredder"
 speed_scale = -1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="55"]
+transform = Transform3D(-3.06045e-06, -70.015, 0, 70.015, -3.06045e-06, 0, 0, 0, 89.86, 133.777, 0, 0)
+mesh = SubResource("PlaneMesh_myvm1")
+surface_material_override/0 = SubResource("StandardMaterial3D_q0mm3")

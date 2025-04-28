@@ -21,7 +21,7 @@ var objects : Array[PackedScene] = [
 
 var t : float = 0
 var t_time : float = 0
-var spawning : bool = false
+@export var spawning : bool = false
 func _process(delta: float) -> void:
 	if spawning and is_instance_valid(mouse):
 		if t>=t_time:
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 			add_child(r)
 			
 			r.global_position = global_position + Vector3(randf_range(-size.x,size.x),randf_range(-size.y,size.y),randf_range(-size.z,size.z))/2
-			#r.global_rotation = Vector3(randf_range(-360,360),randf_range(-360,360),randf_range(-360,360))
+			r.global_rotation = Vector3(randf_range(-360,360),randf_range(-360,360),randf_range(-360,360))
 			#r.angular_velocity = Vector3(randf_range(-5,5),randf_range(-5,5),randf_range(-5,5))
 			r.freeze = false
 			

@@ -14,6 +14,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ygym")
 
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q7r84")
+volume_db = 10.0
+autoplay = true
+
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -62,10 +67,11 @@ layout_mode = 2
 theme = ExtResource("3_souqr")
 text = "Exit"
 
-[node name="BgMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_q7r84")
-volume_db = 10.0
-autoplay = true
+[node name="ToggleSound" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Toggle sound"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="VBoxContainer/ToggleSound" to="." method="_on_toggle_sound_toggled"]

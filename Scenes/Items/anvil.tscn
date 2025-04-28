@@ -14,4 +14,5 @@ metadata/_custom_type_script = "uid://gkrmj4q4kbae"
 [node name="Anvil" parent="." instance=ExtResource("2_y3x0n")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_ilvf0")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://clm7m5yp2u31s"]
+
+[ext_resource type="PackedScene" uid="uid://bv7a3dvyamkyg" path="res://Assets/Models/Player_mouse/Mouse.glb" id="1_4c8ip"]
+[ext_resource type="Material" uid="uid://bb60xusxnsj08" path="res://Assets/Materials/mouse_skin.tres" id="2_s4qnm"]
+
+[node name="Mouse" instance=ExtResource("1_4c8ip")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0.707107, -0.707107, 4.73356e-08, 4.73356e-08)
+bones/1/rotation = Quaternion(2.32638e-15, 1.45177e-08, -1.45177e-08, 1)
+bones/2/rotation = Quaternion(-2.61197e-15, -1.98599e-08, 1.98599e-08, 1)
+bones/3/rotation = Quaternion(3.07038e-15, 1.98599e-08, -1.98599e-08, 1)
+bones/4/rotation = Quaternion(1.71905e-16, 4.87067e-16, -1.77636e-15, 1)
+bones/5/rotation = Quaternion(4.69537e-15, -1.22437e-07, -1.15982e-07, 1)
+bones/6/rotation = Quaternion(5.76012e-08, 5.76012e-08, -0.707107, 0.707107)
+bones/7/rotation = Quaternion(-5.73012e-17, -1.00278e-15, -1.44205e-09, 1)
+bones/8/rotation = Quaternion(-7.45162e-05, 4.03902e-05, 0.000506775, 1)
+bones/9/rotation = Quaternion(2.43665e-11, 4.27077e-08, 0.000513797, 1)
+bones/10/rotation = Quaternion(-2.66163e-11, -4.27121e-08, 0.000513831, 1)
+bones/11/rotation = Quaternion(-3.7816e-12, -1.53179e-12, 0.000513814, 1)
+bones/12/rotation = Quaternion(0.998576, -0.0533506, 0, 0)
+bones/13/position = Vector3(-0.305396, -0.0377922, 0.0370503)
+bones/13/rotation = Quaternion(0.99687, 0.0790648, 0, 0)
+bones/14/position = Vector3(-0.305396, -0.0528551, -0.0553614)
+bones/14/rotation = Quaternion(0.99687, -0.0790647, 0, 0)
+bones/15/position = Vector3(0.042516, -0.0380293, -0.0553614)
+bones/15/rotation = Quaternion(0.998576, 0.0533507, 0, 0)
+
+[node name="mouse" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/2 = ExtResource("2_s4qnm")
+
+[node name="AnimationPlayer" parent="." index="1"]
+speed_scale = 2.0
