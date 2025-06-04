@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://vv2d7cmpsbp2"]
+
+[ext_resource type="Script" uid="uid://pv3xir7ljyi2" path="res://src/testing/dot_cross_testing.gd" id="1_2grvy"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_2grvy")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0.985, 1.715, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+target_position = Vector3(0.985, -0.13, 0)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5

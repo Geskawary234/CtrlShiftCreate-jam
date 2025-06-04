@@ -7,7 +7,7 @@ extends Node
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed('p') and %Mouse.health>0:
+	if Input.is_action_just_pressed('esc') and %Mouse.health>0:
 		get_tree().paused = !get_tree().paused
 			
 		if get_tree().paused:

@@ -18,7 +18,7 @@ func shake():
 @onready var cam_pivot: Node3D = $".."
 var sens = 0.4
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and %Mouse.health>0:
 		cam_pivot.rotation.y = lerp(cam_pivot.rotation.y,cam_pivot.rotation.y-event.relative.x * sens,0.01)
 
 @export var tracking_player : bool = false
@@ -30,8 +30,8 @@ func _process(delta):
 			look_at_pos = -global_basis.z * 5 + global_position
 		
 		look_at(look_at_pos)
-		#look_at_pos = look_at_pos.move_toward(lerp(look_at_pos,%Mouse.global_position,0.01),delta*1000)
-		look_at_pos = lerp(look_at_pos,%Mouse.global_position,0.01)
+		look_at_pos = lerp(look_at_pos,%Mouse.global_position,1)
+		
 		
 	if current_shake_duration > 0:
 		# Generate random shake offset on x and y axes only

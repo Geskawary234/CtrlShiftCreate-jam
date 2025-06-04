@@ -11,13 +11,14 @@ var direction : Vector2
 func reset_position():
 	head_target.position = def_position
 '''
+'''
 var turn_speed : float = 5
 func _process(delta: float) -> void:
 	if direction:
-		head_target.position.z = move_toward(head_target.position.z,-3*direction.y,delta*turn_speed)
+		head_target.position.z = move_toward(head_target.position.z,-3*direction.x,delta*turn_speed)
 	else:
 		head_target.position.z = move_toward(head_target.position.z,def_position.z,delta*turn_speed)
-
+'''
 @onready var ap: AnimationPlayer = $AnimationPlayer2
 func jump():
 	ap.play("Jump")

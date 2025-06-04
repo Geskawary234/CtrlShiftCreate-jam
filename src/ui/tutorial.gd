@@ -2,11 +2,8 @@ extends Control
 
 var prog_speed : float = 30
 
-var ws_val : float = 0
-var ad_val : float = 0
-@onready var wsadlab: Label = $Label
-@onready var ws_prog: ProgressBar = $"Label/WS progress"
-@onready var ad_prog: ProgressBar = $"Label/AD progress"
+@onready var wasd_lab: Label = $Label
+@onready var wasd_progress: ProgressBar = $"Label/WASD progress"
 
 
 @onready var mlab: Label = $"Use mouse to look around!"
@@ -20,28 +17,15 @@ func _process(delta: float) -> void:
 	if Global.did_tutorial or %Mouse.health<=0:
 		queue_free()
 	else:
-		if ws_val<100 or ad_val<100:
-			if ws_val<100:
-				if Input.get_axis('w','s'):
-					ws_val += delta * prog_speed
-				else:
-					ws_val -= delta * prog_speed/5
-				ws_val = clamp(ws_val,0,100)
-			
-			if ad_val<100:
-				if Input.get_axis('a','d'):
-					ad_val += delta * prog_speed
-				else:
-					ad_val -= delta * prog_speed/5
-				ad_val = clamp(ad_val,0,100)
-				
-			
-			ws_prog.value = ws_val
-			ad_prog.value = ad_val
+		if wasd_progress.value<100:
+			if Input.get_vector('w','a','s','d'):
+				wasd_progress.value += delta * prog_speed
+			else:
+				wasd_progress.value -= delta * prog_speed/5
 		
 		else:
 			if mprog.value<100:
-				wsadlab.hide()
+				wasd_lab.hide()
 				mlab.show()
 				if Input.get_last_mouse_velocity().length()>0:
 					mprog.value += delta * Input.get_last_mouse_velocity().length()/25
@@ -58,7 +42,7 @@ func _process(delta: float) -> void:
 					mlab.hide()
 					use_jump.show()
 					if Input.is_action_just_pressed('ui_accept') and %Mouse.velocity.y>%Mouse.JUMP_VELOCITY-2:
-						jprog.value += 12.5
+						jprog.value += 50
 					else:
 						jprog.value -= delta * prog_speed/5
 				

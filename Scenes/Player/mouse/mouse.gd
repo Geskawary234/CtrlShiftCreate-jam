@@ -36,18 +36,18 @@ func hit(other):
 		if other is Powerup:
 			return
 		
-		if other is Item:
-			health -= 5
-			mouse_model.take_damage()
-			hit_cooldown = 1
-		if other is HeavyItem:
-			health = 0
-		elif other is Shard:
-			health -= 1
-			mouse_model.take_damage()
-			hit_cooldown = 1
-		
-		
+		if other is Item or other is Shard:
+			
+			var k = -other.linear_velocity.normalized().dot(velocity.normalized())
+			
+			var res_damage : float = other.max_damage + other.max_damage * k
+			
+			if res_damage>0:
+				hit_cooldown = 1
+				health -= res_damage
+				mouse_model.take_damage()
+			
+			
 			#await get_tree().create_timer(0.5).timeout
 			#get_tree().change_scene_to_file('res://ui/died_menu.tscn')
 		
@@ -70,18 +70,21 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("w", "s", "d", "a")
+	var input_dir := Input.get_vector("d", "a", "s", "w")
 	mouse_model.direction = input_dir
 	
-	rotation.y += input_dir.y * delta * 4
+	#rotation.y += input_dir.y * delta * 4
+	var direction := -(cam.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	var direction := -(transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 	
 	
 	#var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		var ang := Vector2(direction.x,-direction.z).angle()
+		rotation.y = lerp_angle(rotation.y,ang,0.1)
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
