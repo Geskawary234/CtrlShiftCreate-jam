@@ -4,7 +4,7 @@ extends CharacterBody3D
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 
-@onready var cam: Camera3D = $"../CamPivot/Camera3D"
+@export var cam: Camera3D
 @onready var physical_col: RigidBody3D = $RigidBody3D
 
 
@@ -92,8 +92,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	health_bar.value = 100*(health/25)
-	score_lab.text = 'Score: '+str(Global.score)
+	if is_instance_valid(health_bar) and is_instance_valid(score_lab):
+		health_bar.value = 100*(health/25)
+		score_lab.text = 'Score: '+str(Global.score)
 #	score_lab.text = 'Счет: '+str(get_tree().current_scene.score)
 	
 	if hit_cooldown>0:

@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba1j05i0ybikc"]
+
+[ext_resource type="PackedScene" uid="uid://bd7louxexvwd1" path="res://Scenes/Player/mouse/mouse.tscn" id="1_jbxm7"]
+[ext_resource type="PackedScene" uid="uid://bua3csiexul4d" path="res://Scenes/levels/Bossfight 1/killer robot.tscn" id="2_mdacq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jbxm7"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_mdacq"]
+sky_material = SubResource("ProceduralSkyMaterial_jbxm7")
+
+[sub_resource type="Environment" id="Environment_l2ql2"]
+background_mode = 2
+sky = SubResource("Sky_mdacq")
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l2ql2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.656773, -0.653061, 0.377043, -1.49013e-08, 0.499998, 0.866027, -0.754088, -0.568783, 0.328385, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0770874, -6.89923)
+size = Vector3(21.2842, 0.154175, 22.222)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.943477, 0.331437, 0, -0.331437, 0.943477, 0, 5.23492, 5.92575)
+
+[node name="Mouse" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("1_jbxm7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0327597, 0.661139, 0.452744)
+cam = NodePath("../Camera3D")
+
+[node name="killer robot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_mdacq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191926, 0, -8.0985)
+player = NodePath("../Mouse")
+
+[node name="DroppedItems" type="Node" parent="."]

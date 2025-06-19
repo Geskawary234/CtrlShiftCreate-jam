@@ -10,6 +10,7 @@ func play_effect(other):
 	super.play_effect(other)
 	
 	if !shock_camera:
-		mouse.cam.shake_duration = 0.5
-		mouse.cam.shake()
+		if is_instance_valid(mouse):
+			mouse.cam.shake_duration = 0.5
+			mouse.cam.shake()
 		shock_camera = true

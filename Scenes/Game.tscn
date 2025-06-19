@@ -250,9 +250,10 @@ grow_vertical = 2
 theme = ExtResource("10_acvyw")
 show_percentage = false
 
-[node name="Mouse" parent="Game" instance=ExtResource("3_b2bpf")]
+[node name="Mouse" parent="Game" node_paths=PackedStringArray("cam") instance=ExtResource("3_b2bpf")]
 unique_name_in_owner = true
 transform = Transform3D(0.997917, 0, -0.064515, 0, 1, 0, 0.064515, 0, 0.997917, 24.2401, 9.40695, -2.85862)
+cam = NodePath("../CamPivot/Camera3D")
 
 [node name="KillArea" type="Area3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015552, 0)
