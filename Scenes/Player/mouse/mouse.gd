@@ -102,18 +102,20 @@ func _process(delta: float) -> void:
 	
 	
 	if health<=0:
-		var mdl = preload('res://Scenes/Player/mouse/fractured_mouse.tscn').instantiate()
-		get_parent().add_child(mdl)
-		mdl.global_position = global_position
-		mdl.global_rotation = global_rotation
-		cam.get_node('Control').hide()
-		hide()
+		death()
+	
+
+func death():
+	var mdl = preload('res://Scenes/Player/mouse/fractured_mouse.tscn').instantiate()
+	get_parent().add_child(mdl)
+	mdl.global_position = global_position
+	mdl.global_rotation = global_rotation
+	cam.get_node('Control').hide()
+	hide()
 		
-		var dead_scr = preload('res://ui/died_menu.tscn').instantiate()
-		cam.add_child(dead_scr)
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		set_process(false)
-		set_physics_process(false)
-	
-	
+	var dead_scr = preload('res://ui/died_menu.tscn').instantiate()
+	cam.add_child(dead_scr)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	set_process(false)
+	set_physics_process(false)
 	

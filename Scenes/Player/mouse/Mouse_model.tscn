@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cwcdefovm3e74"]
+[gd_scene format=4 uid="uid://cwcdefovm3e74"]
 
 [ext_resource type="Script" uid="uid://cnwl1tgoskqye" path="res://Scenes/Player/mouse/mouse_model.gd" id="1_oph72"]
 [ext_resource type="Material" uid="uid://bb60xusxnsj08" path="res://Assets/Materials/mouse_skin.tres" id="2_0txur"]
@@ -17,12 +17,16 @@ resource_name = "eyes"
 cull_mode = 2
 albedo_color = Color(0.048447, 0.0369714, 0.150253, 1)
 roughness = 0.0954357
+stencil_mode = 3
+stencil_flags = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlt8g"]
 resource_name = "noze"
 cull_mode = 2
 albedo_color = Color(0.225594, 0.17549, 0.17748, 1)
 roughness = 0.466805
+stencil_mode = 3
+stencil_flags = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7fepj"]
 resource_name = "Mouse_mouse"
@@ -214,14 +218,14 @@ stream_1/stream = ExtResource("5_3r8cg")
 stream_2/stream = ExtResource("6_linhc")
 stream_3/stream = ExtResource("7_c5q0p")
 
-[node name="Mouse" type="Node3D"]
+[node name="Mouse" type="Node3D" unique_id=1489585199]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("1_oph72")
 
-[node name="Armature" type="Node3D" parent="."]
+[node name="Armature" type="Node3D" parent="." unique_id=1197181479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.216238, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Armature" unique_id=2041552051]
 bones/0/name = "Bone.005"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0, -1, 7.10543e-15, -1, -9.51312e-22, -1.33885e-07, 1.33885e-07, -7.10543e-15, -1, -1.49315, -0.0618744, 0)
@@ -307,26 +311,24 @@ bones/11/position = Vector3(0, 0.354865, -1.77636e-15)
 bones/11/rotation = Quaternion(-6.00265e-12, 7.63974e-12, 0.00224736, 0.999997)
 bones/11/scale = Vector3(1, 1, 1)
 
-[node name="mouse" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+[node name="mouse" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=290928889]
 material_overlay = SubResource("StandardMaterial3D_oph72")
 mesh = SubResource("ArrayMesh_7fepj")
 skin = SubResource("Skin_jbw2u")
 
-[node name="Head" type="LookAtModifier3D" parent="Armature/Skeleton3D"]
+[node name="Head" type="LookAtModifier3D" parent="Armature/Skeleton3D" unique_id=687069336]
 target_node = NodePath("../../../Target")
 bone_name = "Bone.012"
 bone = 9
 forward_axis = 2
 primary_rotation_axis = 0
 
-[node name="Target" type="Node3D" parent="."]
+[node name="Target" type="Node3D" parent="." unique_id=749636028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.971, 0.5, 0)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_o2o0i")
-}
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=1846995801]
+libraries/ = SubResource("AnimationLibrary_o2o0i")
 speed_scale = 2.0
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1119999671]
 stream = SubResource("AudioStreamRandomizer_e4o63")

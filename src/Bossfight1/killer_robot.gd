@@ -19,6 +19,8 @@ func animate_head() -> void:
 
 ### BOssfight
 
+
+### ATTACK 0
 var objects : Array[PackedScene] = [
 	preload('res://Scenes/Items/bottle.tscn'),
 	preload('res://Scenes/Items/powerups/cheese.tscn'),
@@ -60,7 +62,14 @@ func _process(delta: float) -> void:
 	
 	elif attack_timer>0:
 		attack_timer -= delta
-			
+
+### ATTACK 2
+func attack_2():
+	pass
+
+
+
+### OTHER			
 
 func drop_items():
 	var count := randi_range(5,10)

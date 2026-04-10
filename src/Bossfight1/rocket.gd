@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var speed = 3
+var speed = 5
 
 var player : CharacterBody3D
 var creator : Node3D

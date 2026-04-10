@@ -34,14 +34,16 @@ func _ready() -> void:
 			
 			r.linear_velocity = Vector3(randf_range(-1,1),randf_range(-1,1),randf_range(-1,1)) * power
 	
-	$AudioStreamPlayer3D.play()
-	$Container/GPUParticles3D.emitting = true
-	$Container/GPUParticles3D2.emitting = true
+	if !Global.sfw_mode:
+		$AudioStreamPlayer3D.play()
+		$Container/GPUParticles3D.emitting = true
+		$Container/GPUParticles3D2.emitting = true
+	'''
 	var decal = Decal.new()
 	decal.texture_albedo = preload("res://Assets/Textures/blood_decal.png")
 	decal.size = Vector3(5,10,5)
 	get_parent().add_child(decal)
 	decal.global_position = $AudioStreamPlayer3D.global_position
-	decal.rotation_degrees.y = randf_range(-360,360)
+	decal.rotation_degrees.y = randf_range(-360,360)'''
 			
 			

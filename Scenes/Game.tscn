@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://desjbouoobjtk"]
+[gd_scene format=3 uid="uid://desjbouoobjtk"]
 
 [ext_resource type="Script" uid="uid://twwfja083yu4" path="res://src/game.gd" id="1_2irst"]
 [ext_resource type="Script" uid="uid://bk836ydgmot8x" path="res://src/PuseManager.gd" id="1_71axn"]
@@ -26,8 +26,9 @@ stream_2/stream = ExtResource("5_alh3a")
 
 [sub_resource type="Environment" id="Environment_7lihs"]
 tonemap_exposure = 0.7
-ssao_enabled = true
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.002
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kldst"]
 size = Vector3(1, 29.3296, 44.2146)
@@ -61,66 +62,60 @@ size = Vector3(15.6348, 1, 14.9102)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bf53h"]
 size = Vector3(8.66443, 1.94775, 12.7143)
 
-[node name="Manager" type="Node"]
+[node name="Manager" type="Node" unique_id=171775919]
 process_mode = 3
 script = ExtResource("1_71axn")
 
-[node name="Game" type="Node3D" parent="."]
+[node name="Game" type="Node3D" parent="." unique_id=1736247054]
 process_mode = 1
 script = ExtResource("1_2irst")
 
-[node name="BgMusic" type="AudioStreamPlayer" parent="Game"]
+[node name="BgMusic" type="AudioStreamPlayer" parent="Game" unique_id=691911921]
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_4q8tf")
 script = ExtResource("1_fgofq")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Game"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Game" unique_id=1579292283]
 environment = SubResource("Environment_7lihs")
 
-[node name="Map" parent="Game" instance=ExtResource("1_j5yw3")]
+[node name="Map" parent="Game" unique_id=2122757066 instance=ExtResource("1_j5yw3")]
 transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Game/Map"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Game/Map" unique_id=1728812861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4265, 0, -23.0041)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=99502938]
 transform = Transform3D(0.945751, 0.324891, 0, -0.324891, 0.945751, 0, 0, 0, 1, 14.601, 24.4847, 8.46805)
 shape = SubResource("BoxShape3D_kldst")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=784134471]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.648, 10.9375, 29.6762)
 shape = SubResource("BoxShape3D_2irst")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=956972390]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.648, 10.9375, -12.6528)
 shape = SubResource("BoxShape3D_2irst")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=337445366]
 transform = Transform3D(1, 0, 0, 0, 0.847409, -0.53094, 0, 0.53094, 0.847409, -44.8108, 11.8177, 29.823)
 shape = SubResource("BoxShape3D_71axn")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=874812456]
 transform = Transform3D(-1, -4.64163e-08, -7.40828e-08, 0, 0.847409, -0.53094, 8.74228e-08, -0.53094, -0.847409, -44.8108, 11.8177, -12.9057)
 shape = SubResource("BoxShape3D_71axn")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=863013965]
 transform = Transform3D(1.31134e-07, -0.53094, -0.847409, 2.43336e-15, 0.847409, -0.53094, 1, 6.96244e-08, 1.11124e-07, -57.1197, 11.8177, 8.44535)
 shape = SubResource("BoxShape3D_dahhg")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Game/Map/StaticBody3D"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=786680953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5091, -28.3373, 38.067)
 shape = SubResource("WorldBoundaryShape3D_bf53h")
 
-[node name="SpotLight3D7" type="SpotLight3D" parent="Game/Map"]
-transform = Transform3D(1.6653, 1.06609, -1.8964, 4.08252e-08, 2.38822, 1.34257, 2.17552, -0.816056, 1.45164, 20.7879, 31.0575, 15.7569)
-light_energy = 44.74
-shadow_enabled = true
-spot_range = 51.5012
-
-[node name="CamPivot" type="Node3D" parent="Game"]
+[node name="CamPivot" type="Node3D" parent="Game" unique_id=1763593410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8314, 4, -5.33556)
 
-[node name="Camera3D" type="Camera3D" parent="Game/CamPivot"]
+[node name="Camera3D" type="Camera3D" parent="Game/CamPivot" unique_id=950503813]
 transform = Transform3D(1, 0, 0, 0, 0.893348, 0.449366, 0, -0.449366, 0.893348, 0, 8.944, 11.93)
 current = true
 fov = 58.5
@@ -129,12 +124,12 @@ shake_duration = 0.0
 shake_fade_out_speed = 0.25
 tracking_player = true
 
-[node name="PauseMenu" parent="Game/CamPivot/Camera3D" instance=ExtResource("6_dahhg")]
+[node name="PauseMenu" parent="Game/CamPivot/Camera3D" unique_id=499761177 instance=ExtResource("6_dahhg")]
 process_mode = 2
 visible = false
 theme = ExtResource("10_acvyw")
 
-[node name="Control" type="Control" parent="Game/CamPivot/Camera3D"]
+[node name="Control" type="Control" parent="Game/CamPivot/Camera3D" unique_id=1780936496]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,7 +138,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("10_acvyw")
 
-[node name="ProgressBar" type="ProgressBar" parent="Game/CamPivot/Camera3D/Control"]
+[node name="ProgressBar" type="ProgressBar" parent="Game/CamPivot/Camera3D/Control" unique_id=890413624]
 layout_mode = 0
 offset_right = 203.0
 offset_bottom = 36.0
@@ -152,7 +147,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_bf53h")
 value = 100.0
 show_percentage = false
 
-[node name="Score" type="Label" parent="Game/CamPivot/Camera3D/Control"]
+[node name="Score" type="Label" parent="Game/CamPivot/Camera3D/Control" unique_id=1307229257]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -163,7 +158,7 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 51
 horizontal_alignment = 2
 
-[node name="Tutorial" type="Control" parent="Game/CamPivot/Camera3D"]
+[node name="Tutorial" type="Control" parent="Game/CamPivot/Camera3D" unique_id=130411038]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -173,7 +168,7 @@ grow_vertical = 2
 theme = ExtResource("10_acvyw")
 script = ExtResource("11_4q8tf")
 
-[node name="Label" type="Label" parent="Game/CamPivot/Camera3D/Tutorial"]
+[node name="Label" type="Label" parent="Game/CamPivot/Camera3D/Tutorial" unique_id=1025072209]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -187,7 +182,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Use WASD to move around"
 
-[node name="WASD progress" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Label"]
+[node name="WASD progress" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Label" unique_id=1277289854]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -198,7 +193,7 @@ grow_vertical = 2
 theme = ExtResource("10_acvyw")
 show_percentage = false
 
-[node name="Use mouse to look around!" type="Label" parent="Game/CamPivot/Camera3D/Tutorial"]
+[node name="Use mouse to look around!" type="Label" parent="Game/CamPivot/Camera3D/Tutorial" unique_id=2018776163]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -213,7 +208,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Use mouse to look around!"
 
-[node name="Mprog" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Use mouse to look around!"]
+[node name="Mprog" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Use mouse to look around!" unique_id=716888115]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -224,7 +219,7 @@ grow_vertical = 2
 theme = ExtResource("10_acvyw")
 show_percentage = false
 
-[node name="Use jump" type="Label" parent="Game/CamPivot/Camera3D/Tutorial"]
+[node name="Use jump" type="Label" parent="Game/CamPivot/Camera3D/Tutorial" unique_id=1667127924]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -239,7 +234,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Use SPACE to jump!"
 
-[node name="jprog" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Use jump"]
+[node name="jprog" type="ProgressBar" parent="Game/CamPivot/Camera3D/Tutorial/Use jump" unique_id=5410117]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -250,45 +245,46 @@ grow_vertical = 2
 theme = ExtResource("10_acvyw")
 show_percentage = false
 
-[node name="Mouse" parent="Game" node_paths=PackedStringArray("cam") instance=ExtResource("3_b2bpf")]
+[node name="Mouse" parent="Game" unique_id=579542540 node_paths=PackedStringArray("cam") instance=ExtResource("3_b2bpf")]
 unique_name_in_owner = true
 transform = Transform3D(0.997917, 0, -0.064515, 0, 1, 0, 0.064515, 0, 0.997917, 24.2401, 9.40695, -2.85862)
 cam = NodePath("../CamPivot/Camera3D")
 
-[node name="KillArea" type="Area3D" parent="Game"]
+[node name="KillArea" type="Area3D" parent="Game" unique_id=1781450976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015552, 0)
 script = ExtResource("4_kldst")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/KillArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/KillArea" unique_id=414204036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.594, -11.3478, 0)
 shape = SubResource("BoxShape3D_b2bpf")
 
-[node name="SpawnItemsArea" type="Area3D" parent="Game"]
+[node name="SpawnItemsArea" type="Area3D" parent="Game" unique_id=752508757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6997, 15.8337, -5.08699)
 script = ExtResource("5_b2bpf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/SpawnItemsArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/SpawnItemsArea" unique_id=698601553]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457376, 4.93042, 0.99189)
 shape = SubResource("BoxShape3D_7lihs")
+debug_color = Color(0.74368745, 0.46390092, 0.049535543, 0.41960785)
 
-[node name="Convoyer" type="StaticBody3D" parent="Game"]
+[node name="Convoyer" type="StaticBody3D" parent="Game" unique_id=2016395832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9187, 6.83421, 0)
 script = ExtResource("8_bf53h")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Convoyer"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Convoyer" unique_id=551355423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133301, -2.29482, -5.31929)
 shape = SubResource("BoxShape3D_fgofq")
 
-[node name="Schredder" type="Area3D" parent="Game"]
+[node name="Schredder" type="Area3D" parent="Game" unique_id=1098103404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9588, 5.7895, 0)
 script = ExtResource("6_7lihs")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Schredder"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Schredder" unique_id=633561479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112488, -2.72486, -5.0809)
 shape = SubResource("BoxShape3D_bf53h")
 debug_color = Color(0.977675, 0, 0.402249, 0.42)
 
-[node name="Decal" type="Decal" parent="Game"]
+[node name="Decal" type="Decal" parent="Game" unique_id=739194719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.5193, -12.1984, 7.29907)
 size = Vector3(5, 10, 5)
 texture_albedo = ExtResource("16_alh3a")

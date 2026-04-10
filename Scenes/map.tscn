@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://de51skobp2ife"]
+[gd_scene format=4 uid="uid://de51skobp2ife"]
 
 [ext_resource type="PackedScene" uid="uid://c7t1m78n4ubpb" path="res://Assets/Models/Map/map.glb" id="1_ci6au"]
 [ext_resource type="Texture2D" uid="uid://b1dyaaidlpoik" path="res://Assets/Models/Map/Map_10280_autosave_Material.png" id="3_np2xp"]
@@ -22,7 +22,6 @@ emission_enabled = true
 emission_texture = ExtResource("3_np2xp")
 normal_enabled = true
 normal_texture = ExtResource("5_w7jjh")
-uv1_triplanar = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bbpa2"]
 _surfaces = [{
@@ -126,28 +125,28 @@ _data = {
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
-[node name="map" instance=ExtResource("1_ci6au")]
+[node name="map" unique_id=610116358 instance=ExtResource("1_ci6au")]
 
 [node name="Schredder1" parent="." index="22"]
-transform = Transform3D(0.600827, -1.445e-06, -0.799379, -0.799379, -2.89374e-06, -0.600827, -1.445e-06, 1, -2.89374e-06, 24.7789, 3.27088, -14.8978)
+transform = Transform3D(0.60082674, -1.4450031e-06, -0.7993791, -0.7993791, -2.893745e-06, -0.60082674, -1.4450029e-06, 1, -2.8937445e-06, 24.7789, 3.27088, -14.8978)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Schredder1" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Schredder1" index="0" unique_id=2008056515]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Schredder1/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Schredder1/StaticBody3D" index="0" unique_id=965817016]
 shape = SubResource("ConvexPolygonShape3D_26yhd")
 
 [node name="Cube_009" parent="." index="31"]
 mesh = SubResource("ArrayMesh_4c2oa")
 
 [node name="Schredder2" parent="." index="47"]
-transform = Transform3D(0.600827, -1.445e-06, -0.799379, -0.799379, -2.89374e-06, -0.600827, -1.445e-06, 1, -2.89374e-06, 35.0747, 3.90729, -14.9481)
+transform = Transform3D(0.60082674, -1.4450031e-06, -0.7993791, -0.7993791, -2.893745e-06, -0.60082674, -1.4450029e-06, 1, -2.8937445e-06, 35.0747, 3.90729, -14.9481)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Schredder2" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Schredder2" index="0" unique_id=270489834]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Schredder2/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Schredder2/StaticBody3D" index="0" unique_id=1137093552]
 shape = SubResource("ConvexPolygonShape3D_p3ir5")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." index="48"]
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="48" unique_id=1129097543]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.1518, 66.7681, 9.20619)
 light_color = Color(1, 1, 0.658824, 1)
 light_energy = 142.265
@@ -155,7 +154,7 @@ shadow_enabled = true
 spot_range = 107.852
 spot_angle = 27.5608
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="." index="49"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="." index="49" unique_id=942464442]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 67.1518, 66.7681, 9.20619)
 light_color = Color(1, 1, 0.658824, 1)
 light_energy = 142.265
@@ -163,7 +162,7 @@ shadow_enabled = true
 spot_range = 107.852
 spot_angle = 27.5608
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="." index="50"]
+[node name="SpotLight3D3" type="SpotLight3D" parent="." index="50" unique_id=1037307127]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 103.152, 66.7681, 9.20619)
 light_color = Color(1, 1, 0.658824, 1)
 light_energy = 142.265
@@ -171,7 +170,7 @@ shadow_enabled = true
 spot_range = 107.852
 spot_angle = 27.5608
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="." index="51"]
+[node name="SpotLight3D4" type="SpotLight3D" parent="." index="51" unique_id=514305330]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.1518, 66.7681, -36.7938)
 light_color = Color(1, 1, 0.658824, 1)
 light_energy = 142.265
@@ -179,7 +178,7 @@ shadow_enabled = true
 spot_range = 107.852
 spot_angle = 27.5608
 
-[node name="SpotLight3D5" type="SpotLight3D" parent="." index="52"]
+[node name="SpotLight3D5" type="SpotLight3D" parent="." index="52" unique_id=444842149]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 67.1518, 66.7681, -36.7938)
 light_color = Color(1, 1, 0.658824, 1)
 light_energy = 142.265
@@ -187,7 +186,7 @@ shadow_enabled = true
 spot_range = 107.852
 spot_angle = 27.5608
 
-[node name="SpotLight3D6" type="SpotLight3D" parent="." index="53"]
+[node name="SpotLight3D6" type="SpotLight3D" parent="." index="53" unique_id=2112820106]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 103.152, 66.7681, -36.7938)
 light_color = Color(1, 1, 0.658824, 1)
 light_energy = 142.265
@@ -195,14 +194,12 @@ shadow_enabled = true
 spot_range = 107.852
 spot_angle = 27.5608
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="54"]
-libraries = {
-&"": SubResource("AnimationLibrary_np2xp")
-}
-autoplay = "schredder"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="54" unique_id=1714384971]
+libraries/ = SubResource("AnimationLibrary_np2xp")
+autoplay = &"schredder"
 speed_scale = -1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="55"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="55" unique_id=442998458]
 transform = Transform3D(-3.06045e-06, -70.015, 0, 70.015, -3.06045e-06, 0, 0, 0, 89.86, 133.777, 0, 0)
 mesh = SubResource("PlaneMesh_myvm1")
 surface_material_override/0 = SubResource("StandardMaterial3D_q0mm3")
