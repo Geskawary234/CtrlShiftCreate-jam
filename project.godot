@@ -14,13 +14,17 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="CtrlSihftCreate jam"
+config/name="Metal Madness Machine"
 run/main_scene="uid://i1tqo876k4ed"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
 Global="*res://Global.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [file_customization]
 
@@ -89,8 +93,9 @@ esc={
 
 [physics]
 
+common/physics_ticks_per_second=120
 3d/physics_engine="Jolt Physics"
-3d/solver/solver_iterations=128
+3d/solver/solver_iterations=32
 
 [rendering]
 

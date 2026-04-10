@@ -9,10 +9,8 @@ var JUMP_VELOCITY = 4.5
 
 
 func _ready() -> void:
+	cam.set_blur(false)
 	add_collision_exception_with(physical_col)
-	physical_col.contact_monitor = true
-	physical_col.max_contacts_reported = 10
-	physical_col.body_entered.connect(hit)
 	#cam_rc.add_exception($RigidBody3D)
 '''
 func _process(delta: float) -> void:
@@ -31,16 +29,48 @@ func _process(delta: float) -> void:
 
 var health : float = 25
 var hit_cooldown : float = 0
-func hit(other):
+func hit(col : KinematicCollision3D):
+
+	for i in col.get_collision_count():
+	
+		var object = col.get_collider(i)
+		var vel : Vector3 = col.get_collider_velocity(i)
+		
+		if object is Powerup: return
+		
+		if object is Item or object is Shard:
+			
+			
+			if hit_cooldown>0: return
+			
+			var dot_product : float = -vel.normalized().dot(velocity.normalized())
+			dot_product = clamp(dot_product,0,1)
+			
+			var damage : float = dot_product * object.max_damage
+			#print(dot_product, ' ',object.name)
+			
+			if damage>0:
+				hit_cooldown = 1
+				health -= damage
+				mouse_model.take_damage()
+			
+			
+		
+		
+	
+	
+	'''
 	if hit_cooldown<=0:
 		if other is Powerup:
 			return
 		
 		if other is Item or other is Shard:
+	
 			
 			var k = -other.linear_velocity.normalized().dot(velocity.normalized())
+			k = clamp(k,0,1)
 			
-			var res_damage : float = other.max_damage + other.max_damage * k
+			var res_damage : float = other.max_damage * k * 2
 			
 			if res_damage>0:
 				hit_cooldown = 1
@@ -50,7 +80,7 @@ func hit(other):
 			
 			#await get_tree().create_timer(0.5).timeout
 			#get_tree().change_scene_to_file('res://ui/died_menu.tscn')
-		
+		'''
 		
 		
 
@@ -89,7 +119,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	
 	move_and_slide()
+	
+	var last_col : = get_last_slide_collision()
+	if last_col:
+		hit(last_col)
+		
 
 func _process(delta: float) -> void:
 	if is_instance_valid(health_bar) and is_instance_valid(score_lab):
@@ -101,7 +137,7 @@ func _process(delta: float) -> void:
 		hit_cooldown -= delta
 	
 	
-	if health<=0:
+	if health<1:
 		death()
 	
 
@@ -116,6 +152,7 @@ func death():
 	var dead_scr = preload('res://ui/died_menu.tscn').instantiate()
 	cam.add_child(dead_scr)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	cam.set_blur(true)
 	set_process(false)
 	set_physics_process(false)
 	

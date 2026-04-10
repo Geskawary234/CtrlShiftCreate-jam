@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bribwebwk37rn"]
+[gd_scene format=3 uid="uid://bribwebwk37rn"]
 
 [ext_resource type="Script" uid="uid://cdujjchoqvvym" path="res://src/Items/hammer.gd" id="1_6kdac"]
 [ext_resource type="AudioStream" uid="uid://i5t5aldy1trt" path="res://Assets/Sounds/hammer/hammer_falling1.mp3" id="2_6kdac"]
@@ -13,23 +13,8 @@ stream_1/stream = ExtResource("3_enspb")
 stream_2/stream = ExtResource("4_g4hgm")
 stream_3/stream = ExtResource("5_3hljy")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_6kdac"]
-radius = 0.107422
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_enspb"]
-height = 0.640991
-radius = 0.107422
-
-[node name="Hammer" type="RigidBody3D"]
-mass = 100.0
+[node name="Hammer" type="RigidBody3D" unique_id=2020282227]
+mass = 10.0
 script = ExtResource("1_6kdac")
 sounds = SubResource("AudioStreamRandomizer_hlda8")
 metadata/_custom_type_script = "uid://ymgo26vkrwkx"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162476, 0)
-shape = SubResource("CylinderShape3D_6kdac")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.00107531, 1.05352, 0)
-shape = SubResource("CylinderShape3D_enspb")

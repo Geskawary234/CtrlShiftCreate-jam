@@ -11,6 +11,10 @@ func _ready():
 	initial_position = position # Store the initial world position
 	shake()
 
+func set_blur(val : bool):
+	attributes.dof_blur_near_enabled = val
+	
+	
 # Call this function to initiate the shake
 func shake():
 	current_shake_duration = shake_duration

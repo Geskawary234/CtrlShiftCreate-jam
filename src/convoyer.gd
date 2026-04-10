@@ -5,8 +5,6 @@ class_name Convoyer
 
 @onready var conv_mesh: MeshInstance3D = $"../Map/Cube_009"
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mat = conv_mesh.mesh.surface_get_material(0)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://f26slyru0r74"]
+[gd_scene format=3 uid="uid://f26slyru0r74"]
 
-[ext_resource type="Script" uid="uid://h6vdaunx2v3w" path="res://Scenes/Items/safe.gd" id="1_l6nl6"]
+[ext_resource type="Script" uid="uid://h6vdaunx2v3w" path="res://src/Items/safe.gd" id="1_l6nl6"]
 [ext_resource type="PackedScene" uid="uid://qbsl4j7ope4i" path="res://Assets/Models/safe/safe.glb" id="2_ghytc"]
 [ext_resource type="PackedScene" uid="uid://b2kkbxthn1fei" path="res://Assets/Models/safe/safe_fracture.glb" id="2_n7o0f"]
 [ext_resource type="AudioStream" uid="uid://o8pm0ctimhg0" path="res://Assets/Sounds/Metall falling/11L-metal_object_breakin-1745753839264.mp3" id="2_vbl42"]

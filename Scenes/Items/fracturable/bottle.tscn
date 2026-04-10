@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://08vn3xybyeik"]
+[gd_scene format=3 uid="uid://08vn3xybyeik"]
 
-[ext_resource type="Script" uid="uid://oc7ebefhadns" path="res://Scenes/Items/bottle.gd" id="1_8g7sd"]
+[ext_resource type="Script" uid="uid://oc7ebefhadns" path="res://src/Items/bottle.gd" id="1_8g7sd"]
 [ext_resource type="PackedScene" uid="uid://cej7sspt8ppvs" path="res://Assets/Models/Bottle/Bottle_fractured.glb" id="2_djy8p"]
 [ext_resource type="PackedScene" uid="uid://cc8qatwhjcupn" path="res://Assets/Models/Bottle/Bottle.glb" id="3_5nowo"]
 [ext_resource type="AudioStream" uid="uid://qo4nina7gv0e" path="res://Assets/Sounds/Glass/shatter1.mp3" id="3_gpmim"]
@@ -19,15 +19,15 @@ stream_3/stream = ExtResource("6_cgv8h")
 height = 3.00464
 radius = 0.629883
 
-[node name="Bottle" type="RigidBody3D"]
+[node name="Bottle" type="RigidBody3D" unique_id=1705952790]
 script = ExtResource("1_8g7sd")
 fractured = ExtResource("2_djy8p")
 stream_on_fracture = SubResource("AudioStreamRandomizer_gpmim")
 metadata/_custom_type_script = "uid://dcrxceryjlej4"
 metadata/_edit_group_ = true
 
-[node name="Bottle" parent="." instance=ExtResource("3_5nowo")]
+[node name="Bottle" parent="." unique_id=794412899 instance=ExtResource("3_5nowo")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1835578939]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52197, 0)
 shape = SubResource("CylinderShape3D_ri5n3")

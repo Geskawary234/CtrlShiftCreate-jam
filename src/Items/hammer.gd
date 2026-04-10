@@ -10,9 +10,5 @@ var hammers : Array[PackedScene] = [
 ]
 
 
-func _ready() -> void:
-	super._ready()
-	var h = hammers.pick_random().instantiate()
-	add_child()
 	
 	

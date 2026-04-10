@@ -4,23 +4,29 @@ extends Area3D
 @onready var mouse : CharacterBody3D = %Mouse
 
 var objects : Array[PackedScene] = [
-	preload('res://Scenes/Items/bottle.tscn'),
+	preload('res://Scenes/Items/fracturable/bottle.tscn'),
 	preload('res://Scenes/Items/powerups/cheese.tscn'),
-	preload('res://Scenes/Items/axe.tscn'),
-	preload('res://Scenes/Items/dumbbel.tscn'),
-	preload('res://Scenes/Items/gear.tscn'),
-	preload('res://Scenes/Items/iron_pipes.tscn'),
-	preload('res://Scenes/Items/toster.tscn'),
-	preload('res://Scenes/Items/wrench.tscn'),
-	preload("res://Scenes/Items/heater.tscn"),
-	preload('res://Scenes/Items/crowbar.tscn'),
-	preload('res://Scenes/Items/safe.tscn'),
-	preload('res://Scenes/Items/kettle_bell.tscn'),
-	preload('res://Scenes/Items/anvil.tscn')
+	preload('res://Scenes/Items/items/axe.tscn'),
+	preload('res://Scenes/Items/heavy items/dumbbel.tscn'),
+	preload('res://Scenes/Items/fracturable/gear.tscn'),
+	preload('res://Scenes/Items/heavy items/iron_pipes.tscn'),
+	preload('res://Scenes/Items/fracturable/toster.tscn'),
+	preload('res://Scenes/Items/items/wrench.tscn'),
+	preload('res://Scenes/Items/heavy items/heater.tscn'),
+	preload('res://Scenes/Items/items/crowbar.tscn'),
+	preload('res://Scenes/Items/fracturable/safe.tscn'),
+	preload('res://Scenes/Items/heavy items/kettle_bell.tscn'),
+	preload('res://Scenes/Items/heavy items/anvil.tscn'),
+	preload('res://Scenes/Items/items/hammers/hammer_0.tscn'),
+	preload('res://Scenes/Items/items/hammers/hammer_1.tscn'),
+	preload('res://Scenes/Items/items/hammers/hammer_2.tscn'),
+	preload('res://Scenes/Items/items/hammers/hammer_3.tscn'),
+	preload('res://Scenes/Items/items/hammers/hammer_4.tscn')
 ]
 
 var t : float = 0
 var t_time : float = 0
+var time_multiplier : float = 1
 @export var spawning : bool = false
 func _process(delta: float) -> void:
 	if spawning and is_instance_valid(mouse):
@@ -41,6 +47,9 @@ func _process(delta: float) -> void:
 			
 			t = 0
 		else:
-			t+=delta
+			t+= delta * time_multiplier
+			
+		time_multiplier += delta / 10
+		#print(time_multiplier)
 
 	

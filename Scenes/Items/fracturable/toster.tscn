@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqcq8of2hwccd"]
+[gd_scene format=3 uid="uid://bqcq8of2hwccd"]
 
 [ext_resource type="Script" uid="uid://ckaq0h45apmlj" path="res://src/Items/fractable_schredder_destroyable.gd" id="1_omf50"]
 [ext_resource type="PackedScene" uid="uid://weu8a646grs0" path="res://Assets/Models/toster/toster_fractured.glb" id="2_rwskk"]
@@ -18,14 +18,14 @@ stream_3/stream = ExtResource("6_rc563")
 [sub_resource type="BoxShape3D" id="BoxShape3D_nomga"]
 size = Vector3(1.3783, 1.69653, 3.07422)
 
-[node name="Toster" type="RigidBody3D"]
+[node name="Toster" type="RigidBody3D" unique_id=409678807]
 script = ExtResource("1_omf50")
 fractured = ExtResource("2_rwskk")
 stream_on_fracture = SubResource("AudioStreamRandomizer_ny5nd")
 metadata/_custom_type_script = "uid://ckaq0h45apmlj"
 
-[node name="toster" parent="." instance=ExtResource("3_fk8d6")]
+[node name="toster" parent="." unique_id=351233095 instance=ExtResource("3_fk8d6")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=242131062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00408936, -0.024292, 0.728516)
 shape = SubResource("BoxShape3D_nomga")

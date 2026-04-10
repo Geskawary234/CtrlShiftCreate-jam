@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cui6ook72j1c0"]
+[gd_scene format=3 uid="uid://cui6ook72j1c0"]
 
 [ext_resource type="Texture2D" uid="uid://bv2c752q7wr3b" path="res://Assets/Textures/comix/page1.jpg" id="1_1bprt"]
 [ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="1_cd3d2"]
@@ -213,7 +213,44 @@ _data = {
 &"main": SubResource("Animation_5bggp")
 }
 
-[node name="Comix" type="Control"]
+[sub_resource type="Animation" id="Animation_nba4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qr6x6"]
+resource_name = "blink"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bbtqj"]
+_data = {
+&"RESET": SubResource("Animation_nba4x"),
+&"blink": SubResource("Animation_qr6x6")
+}
+
+[node name="Comix" type="Control" unique_id=412885459]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,7 +260,7 @@ grow_vertical = 2
 theme = ExtResource("1_cd3d2")
 script = ExtResource("1_gmrbt")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=120681233]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -232,7 +269,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="p1" type="TextureRect" parent="."]
+[node name="SkipProgress" type="ProgressBar" parent="." unique_id=1274919321]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = 195.0
+offset_right = 475.29065
+offset_bottom = 315.72772
+grow_vertical = 2
+rotation = 4.7123823
+value = 29.29
+show_percentage = false
+
+[node name="p1" type="TextureRect" parent="." unique_id=536795587]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -248,7 +299,7 @@ grow_vertical = 2
 texture = ExtResource("1_1bprt")
 expand_mode = 1
 
-[node name="p2" type="TextureRect" parent="."]
+[node name="p2" type="TextureRect" parent="." unique_id=1394774422]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -264,7 +315,7 @@ grow_vertical = 2
 texture = ExtResource("1_ftjte")
 expand_mode = 1
 
-[node name="p3" type="TextureRect" parent="."]
+[node name="p3" type="TextureRect" parent="." unique_id=1775245914]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -281,7 +332,7 @@ grow_vertical = 2
 texture = ExtResource("2_gmrbt")
 expand_mode = 1
 
-[node name="p4" type="TextureRect" parent="."]
+[node name="p4" type="TextureRect" parent="." unique_id=1554640106]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -298,35 +349,30 @@ grow_vertical = 2
 texture = ExtResource("3_5bggp")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_nba4x")
-}
-autoplay = "main"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=508330676]
+libraries/ = SubResource("AnimationLibrary_nba4x")
+autoplay = &"main"
 speed_scale = 0.7
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=224960434]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -198.0
-offset_top = -83.9999
-offset_right = 161.0
-offset_bottom = -33.9999
-grow_horizontal = 0
+offset_left = 23.0
+offset_top = -111.0
+offset_right = 277.5846
+offset_bottom = -15.789551
 grow_vertical = 0
 scale = Vector2(0.48314, 0.48314)
 theme_override_font_sizes/font_size = 36
-text = "Press space
-to continue"
+text = "Hold Space"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label" unique_id=1548122671]
+libraries/ = SubResource("AnimationLibrary_bbtqj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=143525368]
 stream = ExtResource("6_5bggp")
 volume_db = 6.151
 autoplay = true
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

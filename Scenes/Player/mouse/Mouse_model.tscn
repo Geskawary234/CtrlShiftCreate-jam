@@ -12,21 +12,45 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(1, 0, 0, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5082u"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2swo"]
 resource_name = "eyes"
+next_pass = SubResource("StandardMaterial3D_5082u")
 cull_mode = 2
 albedo_color = Color(0.048447, 0.0369714, 0.150253, 1)
 roughness = 0.0954357
-stencil_mode = 3
+stencil_mode = 2
 stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0txur"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlt8g"]
 resource_name = "noze"
+next_pass = SubResource("StandardMaterial3D_0txur")
 cull_mode = 2
 albedo_color = Color(0.225594, 0.17549, 0.17748, 1)
 roughness = 0.466805
-stencil_mode = 3
+stencil_mode = 2
 stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7fepj"]
 resource_name = "Mouse_mouse"

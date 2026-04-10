@@ -22,6 +22,7 @@ emission_enabled = true
 emission_texture = ExtResource("3_np2xp")
 normal_enabled = true
 normal_texture = ExtResource("5_w7jjh")
+uv1_triplanar = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bbpa2"]
 _surfaces = [{

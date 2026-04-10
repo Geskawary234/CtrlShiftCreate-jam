@@ -16,7 +16,8 @@
 [ext_resource type="Script" uid="uid://blfv7vqnici02" path="res://src/convoyer.gd" id="8_bf53h"]
 [ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="10_acvyw"]
 [ext_resource type="Script" uid="uid://di3ri5yftboss" path="res://src/ui/tutorial.gd" id="11_4q8tf"]
-[ext_resource type="Texture2D" uid="uid://djsp1oliosnxu" path="res://Assets/Textures/blood_decal.png" id="16_alh3a"]
+[ext_resource type="Texture2D" uid="uid://d10ywm6yr5a4d" path="res://Assets/ui/screen_overlay.png" id="11_x3xnh"]
+[ext_resource type="Texture2D" uid="uid://q60xs8du0r5v" path="res://Assets/ui/tutorial_overlay.png" id="13_x3xnh"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4q8tf"]
 streams_count = 3
@@ -28,7 +29,7 @@ stream_2/stream = ExtResource("5_alh3a")
 tonemap_exposure = 0.7
 glow_enabled = true
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.002
+volumetric_fog_density = 0.005
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kldst"]
 size = Vector3(1, 29.3296, 44.2146)
@@ -44,11 +45,8 @@ size = Vector3(49.733, 11.7617, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bf53h"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2irst"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf53h"]
-bg_color = Color(1, 0, 0, 1)
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_x3xnh"]
+dof_blur_near_distance = 64.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2bpf"]
 size = Vector3(158.695, 5.45801, 110.084)
@@ -57,7 +55,7 @@ size = Vector3(158.695, 5.45801, 110.084)
 size = Vector3(12.4735, 1, 14.0887)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fgofq"]
-size = Vector3(15.6348, 1, 14.9102)
+size = Vector3(15.6348, 1, 16.32251)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bf53h"]
 size = Vector3(8.66443, 1.94775, 12.7143)
@@ -89,12 +87,14 @@ transform = Transform3D(0.945751, 0.324891, 0, -0.324891, 0.945751, 0, 0, 0, 1, 
 shape = SubResource("BoxShape3D_kldst")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=784134471]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.648, 10.9375, 29.6762)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -10.648003, 10.937499, 29.6762)
 shape = SubResource("BoxShape3D_2irst")
+disabled = true
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=956972390]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.648, 10.9375, -12.6528)
 shape = SubResource("BoxShape3D_2irst")
+disabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=337445366]
 transform = Transform3D(1, 0, 0, 0, 0.847409, -0.53094, 0, 0.53094, 0.847409, -44.8108, 11.8177, 29.823)
@@ -117,6 +117,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8314, 4, -5.33556)
 
 [node name="Camera3D" type="Camera3D" parent="Game/CamPivot" unique_id=950503813]
 transform = Transform3D(1, 0, 0, 0, 0.893348, 0.449366, 0, -0.449366, 0.893348, 0, 8.944, 11.93)
+attributes = SubResource("CameraAttributesPractical_x3xnh")
 current = true
 fov = 58.5
 script = ExtResource("2_kldst")
@@ -127,7 +128,6 @@ tracking_player = true
 [node name="PauseMenu" parent="Game/CamPivot/Camera3D" unique_id=499761177 instance=ExtResource("6_dahhg")]
 process_mode = 2
 visible = false
-theme = ExtResource("10_acvyw")
 
 [node name="Control" type="Control" parent="Game/CamPivot/Camera3D" unique_id=1780936496]
 layout_mode = 3
@@ -138,12 +138,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("10_acvyw")
 
+[node name="TextureRect" type="TextureRect" parent="Game/CamPivot/Camera3D/Control" unique_id=91568955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_x3xnh")
+expand_mode = 1
+
 [node name="ProgressBar" type="ProgressBar" parent="Game/CamPivot/Camera3D/Control" unique_id=890413624]
 layout_mode = 0
-offset_right = 203.0
-offset_bottom = 36.0
-theme_override_styles/background = SubResource("StyleBoxFlat_2irst")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bf53h")
+offset_left = 19.0
+offset_top = 213.0
+offset_right = 222.0
+offset_bottom = 249.0
+rotation = -1.5707941
 value = 100.0
 show_percentage = false
 
@@ -152,8 +163,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -301.0
-offset_bottom = 136.0
+offset_left = -320.0
+offset_top = 13.0
+offset_right = -19.0
+offset_bottom = 149.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 51
 horizontal_alignment = 2
@@ -168,6 +181,22 @@ grow_vertical = 2
 theme = ExtResource("10_acvyw")
 script = ExtResource("11_4q8tf")
 
+[node name="TextureRect" type="TextureRect" parent="Game/CamPivot/Camera3D/Tutorial" unique_id=1645617240]
+z_index = -1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -369.0
+offset_top = -177.0
+offset_right = 392.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("13_x3xnh")
+expand_mode = 1
+
 [node name="Label" type="Label" parent="Game/CamPivot/Camera3D/Tutorial" unique_id=1025072209]
 layout_mode = 1
 anchors_preset = 7
@@ -176,8 +205,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -283.0
-offset_top = -46.0
+offset_top = -58.0
 offset_right = 284.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Use WASD to move around"
@@ -191,6 +221,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("10_acvyw")
+max_value = 50.0
 show_percentage = false
 
 [node name="Use mouse to look around!" type="Label" parent="Game/CamPivot/Camera3D/Tutorial" unique_id=2018776163]
@@ -217,6 +248,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("10_acvyw")
+max_value = 50.0
 show_percentage = false
 
 [node name="Use jump" type="Label" parent="Game/CamPivot/Camera3D/Tutorial" unique_id=1667127924]
@@ -243,7 +275,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("10_acvyw")
+max_value = 50.0
 show_percentage = false
+
+[node name="Label2" type="Label" parent="Game/CamPivot/Camera3D/Tutorial" unique_id=1239685328]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.5
+offset_top = -110.0
+offset_right = 67.5
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Skip: E"
 
 [node name="Mouse" parent="Game" unique_id=579542540 node_paths=PackedStringArray("cam") instance=ExtResource("3_b2bpf")]
 unique_name_in_owner = true
@@ -272,7 +320,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9187, 6.83421, 0)
 script = ExtResource("8_bf53h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Game/Convoyer" unique_id=551355423]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133301, -2.29482, -5.31929)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13330078, -2.2948203, -5.31929)
 shape = SubResource("BoxShape3D_fgofq")
 
 [node name="Schredder" type="Area3D" parent="Game" unique_id=1098103404]
@@ -283,8 +331,3 @@ script = ExtResource("6_7lihs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112488, -2.72486, -5.0809)
 shape = SubResource("BoxShape3D_bf53h")
 debug_color = Color(0.977675, 0, 0.402249, 0.42)
-
-[node name="Decal" type="Decal" parent="Game" unique_id=739194719]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.5193, -12.1984, 7.29907)
-size = Vector3(5, 10, 5)
-texture_albedo = ExtResource("16_alh3a")

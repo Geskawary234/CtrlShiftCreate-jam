@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bpww285qye7ta"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bpww285qye7ta"]
 
 [ext_resource type="Shader" uid="uid://cry5dum13cb86" path="res://Assets/shaders/Fire.gdshader" id="1_ouqy3"]
 
@@ -7,8 +7,8 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_da7k6"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u44md"]
-color_ramp = SubResource("Gradient_8ii6u")
 noise = SubResource("FastNoiseLite_da7k6")
+color_ramp = SubResource("Gradient_8ii6u")
 
 [resource]
 render_priority = 0
