@@ -9,6 +9,7 @@ func _ready() -> void:
 	max_contacts_reported = 1
 	
 	player = AudioStreamPlayer3D.new()
+	player.bus = 'Sound'
 	add_child(player)
 	player.stream = sounds
 	

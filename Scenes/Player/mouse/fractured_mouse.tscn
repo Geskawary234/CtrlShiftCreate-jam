@@ -92,3 +92,4 @@ surface_material_override/0 = ExtResource("3_fgdin")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="13" unique_id=107313405]
 stream = SubResource("AudioStreamRandomizer_ib7eg")
+bus = &"Sound"

@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://b1tkv71pktg3g"]
+
+[ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="1_18s2q"]
+[ext_resource type="Script" uid="uid://dnihwqkg0hobm" path="res://src/ui/sound_control.gd" id="2_23c8h"]
+[ext_resource type="Texture2D" uid="uid://bfc3ab4qyd27w" path="res://Assets/ui/button_small_normal.png" id="2_subio"]
+[ext_resource type="Texture2D" uid="uid://cmks6bpbjgvx6" path="res://Assets/ui/button_small_pressed.png" id="3_23c8h"]
+[ext_resource type="Texture2D" uid="uid://gxh1ogmdembp" path="res://Assets/ui/button_small_hover.png" id="4_r6n0v"]
+[ext_resource type="Texture2D" uid="uid://bhf3s17u6wsvj" path="res://Assets/ui/arrow.png" id="6_23c8h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1gg6b"]
+texture = ExtResource("2_subio")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u0drs"]
+texture = ExtResource("3_23c8h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocqim"]
+texture = ExtResource("4_r6n0v")
+
+[node name="SoundControl" type="VBoxContainer" unique_id=1234311437]
+anchors_preset = -1
+anchor_right = 0.33900002
+anchor_bottom = 0.38300002
+offset_right = -0.52801514
+offset_bottom = -0.18400574
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_18s2q")
+script = ExtResource("2_23c8h")
+
+[node name="Sound" type="HBoxContainer" parent="." unique_id=801105150]
+layout_mode = 2
+theme = ExtResource("1_18s2q")
+alignment = 1
+
+[node name="sound_lower" type="Button" parent="Sound" unique_id=1155722037]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("1_18s2q")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1gg6b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u0drs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocqim")
+
+[node name="TextureRect" type="TextureRect" parent="Sound/sound_lower" unique_id=1995136502]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(0.72, 0.72)
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("6_23c8h")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Sound" unique_id=1629275817]
+layout_mode = 2
+theme = ExtResource("1_18s2q")
+text = "Sound: 0"
+
+[node name="sound_higher" type="Button" parent="Sound" unique_id=1637445630]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("1_18s2q")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1gg6b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u0drs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocqim")
+
+[node name="TextureRect" type="TextureRect" parent="Sound/sound_higher" unique_id=84083034]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.72, 0.72)
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("6_23c8h")
+expand_mode = 1
+
+[node name="Music" type="HBoxContainer" parent="." unique_id=1194405365]
+layout_mode = 2
+theme = ExtResource("1_18s2q")
+alignment = 1
+
+[node name="music_lower" type="Button" parent="Music" unique_id=593950461]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("1_18s2q")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1gg6b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u0drs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocqim")
+
+[node name="TextureRect" type="TextureRect" parent="Music/music_lower" unique_id=1905460173]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+scale = Vector2(0.72, 0.72)
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("6_23c8h")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Music" unique_id=688214499]
+layout_mode = 2
+theme = ExtResource("1_18s2q")
+text = "Music: 0"
+
+[node name="music_higher" type="Button" parent="Music" unique_id=1614971656]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme = ExtResource("1_18s2q")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1gg6b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u0drs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocqim")
+
+[node name="TextureRect" type="TextureRect" parent="Music/music_higher" unique_id=1808346900]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.72, 0.72)
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("6_23c8h")
+expand_mode = 1

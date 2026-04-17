@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://lrukmfs3e533" path="res://Assets/OtherMusic/MOUSE..........PULLS..RADIATOR...........mp3" id="2_q7r84"]
 [ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="3_souqr"]
 [ext_resource type="Texture2D" uid="uid://cjbau6v4djq2x" path="res://Assets/ui/main_menu_overlay.png" id="4_v2uf6"]
+[ext_resource type="PackedScene" uid="uid://b1tkv71pktg3g" path="res://ui/sound_control.tscn" id="6_8g6r7"]
 
 [node name="Control" type="Control" unique_id=1576475062]
 layout_mode = 3
@@ -19,6 +20,7 @@ script = ExtResource("1_1ygym")
 stream = ExtResource("2_q7r84")
 volume_db = 10.0
 autoplay = true
+bus = &"Music"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=266250354]
 layout_mode = 1
@@ -60,10 +62,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 56.0
-offset_top = -211.0
-offset_right = 301.0
-offset_bottom = 165.0
+offset_left = 36.0
+offset_top = -105.46976
+offset_right = 281.0
+offset_bottom = 105.46976
 grow_vertical = 2
 scale = Vector2(1.57518, 1.57518)
 alignment = 1
@@ -79,9 +81,23 @@ theme = ExtResource("3_souqr")
 text = "Exit"
 
 [node name="ToggleSound" type="CheckButton" parent="VBoxContainer" unique_id=1748893032]
+visible = false
 layout_mode = 2
 button_pressed = true
 text = "Toggle sound"
+
+[node name="SoundControl" parent="." unique_id=1234311437 instance=ExtResource("6_8g6r7")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -169.0
+offset_right = 378.0
+offset_bottom = -37.0
+grow_horizontal = 1
+grow_vertical = 0
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

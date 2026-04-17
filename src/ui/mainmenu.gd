@@ -13,6 +13,9 @@ func _on_exit_pressed() -> void:
 
 
 func _ready() -> void:
+	
+	$VBoxContainer/ToggleSound.button_pressed = !AudioServer.is_bus_mute(0)
+	
 	if randi_range(1,20)==1:
 		$VideoStreamPlayer.stream = preload('res://Assets/video/spinning_mouse.ogv')
 		$VideoStreamPlayer.play()
@@ -20,3 +23,4 @@ func _ready() -> void:
 
 func _on_toggle_sound_toggled(val: bool) -> void:
 	AudioServer.set_bus_mute(0,!val)
+	

@@ -6,6 +6,7 @@ class_name Fractable
 
 var shard_damage : float = 2
 
+
 @export var stream_on_fracture : AudioStream
 
 func _ready() -> void:
@@ -55,6 +56,7 @@ func fracture(power : int = 0):
 	
 	if stream_on_fracture != null:
 		var aud = AudioStreamPlayer3D.new()
+		aud.bus = 'Sound'
 		aud.stream = stream_on_fracture
 		
 		model.add_child(aud)

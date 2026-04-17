@@ -376,3 +376,4 @@ libraries/ = SubResource("AnimationLibrary_bbtqj")
 stream = ExtResource("6_5bggp")
 volume_db = 6.151
 autoplay = true
+bus = &"Sound"

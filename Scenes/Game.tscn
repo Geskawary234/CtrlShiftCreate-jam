@@ -32,7 +32,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.005
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kldst"]
-size = Vector3(1, 29.3296, 44.2146)
+size = Vector3(1, 63.348392, 44.2146)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2irst"]
 size = Vector3(45.0516, 6.43665, 2.47278)
@@ -52,7 +52,7 @@ dof_blur_near_distance = 64.0
 size = Vector3(158.695, 5.45801, 110.084)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7lihs"]
-size = Vector3(12.4735, 1, 14.0887)
+size = Vector3(14.925348, 1, 14.0887)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fgofq"]
 size = Vector3(15.6348, 1, 16.32251)
@@ -71,6 +71,7 @@ script = ExtResource("1_2irst")
 [node name="BgMusic" type="AudioStreamPlayer" parent="Game" unique_id=691911921]
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_4q8tf")
+bus = &"Music"
 script = ExtResource("1_fgofq")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Game" unique_id=1579292283]
@@ -83,7 +84,7 @@ transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4265, 0, -23.0041)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=99502938]
-transform = Transform3D(0.945751, 0.324891, 0, -0.324891, 0.945751, 0, 0, 0, 1, 14.601, 24.4847, 8.46805)
+transform = Transform3D(0.945751, 0.324891, 0, -0.324891, 0.945751, 0, 0, 0, 0.9999999, 20.12719, 40.57135, 8.46805)
 shape = SubResource("BoxShape3D_kldst")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Game/Map/StaticBody3D" unique_id=784134471]
@@ -311,7 +312,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6997, 15.8337, -5.08699)
 script = ExtResource("5_b2bpf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Game/SpawnItemsArea" unique_id=698601553]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457376, 4.93042, 0.99189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6833, 4.93042, 0.99188995)
 shape = SubResource("BoxShape3D_7lihs")
 debug_color = Color(0.74368745, 0.46390092, 0.049535543, 0.41960785)
 

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b57mhyk240bkj"]
+
+[ext_resource type="PackedScene" uid="uid://cvlr27dkf8xks" path="res://Assets/Models/piggy bank.fbx" id="1_o0otx"]
+[ext_resource type="PackedScene" uid="uid://csf5ffa146ftl" path="res://Assets/Models/piggy bank fractured.fbx" id="2_m7002"]
+[ext_resource type="Script" uid="uid://oa26q6e3lyrx" path="res://src/Items/piggy_bank.gd" id="2_o0otx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d8imj"]
+
+[node name="piggy bank" unique_id=167289916 instance=ExtResource("1_o0otx")]
+script = ExtResource("2_o0otx")
+fractured = ExtResource("2_m7002")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="10" unique_id=1030735963]
+transform = Transform3D(-6.556708e-08, -1.5, 0, 1.5, -6.556708e-08, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_d8imj")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bjgcu7gn8s3oy" path="res://src/ui/pause_menu.gd" id="1_50142"]
 [ext_resource type="Theme" uid="uid://btpc1wj1yrnxe" path="res://ui/Theme.tres" id="1_fob5h"]
 [ext_resource type="Texture2D" uid="uid://c0qsi3hwvnlhb" path="res://Assets/ui/pause_overlay.png" id="2_ejwgg"]
+[ext_resource type="PackedScene" uid="uid://b1tkv71pktg3g" path="res://ui/sound_control.tscn" id="4_avurv"]
 
 [node name="Control" type="Control" unique_id=943437346]
 layout_mode = 3
@@ -31,14 +32,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -46.0
-offset_right = 205.0
-offset_bottom = 74.0
+offset_left = -212.5
+offset_top = -112.0
+offset_right = 212.5
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_fob5h")
 theme_override_font_sizes/font_size = 31
 text = "Exit to main menu"
+
+[node name="SoundControl" parent="." unique_id=1234311437 instance=ExtResource("4_avurv")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.50006
+offset_top = 35.0
+offset_right = 191.50006
+offset_bottom = 167.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
