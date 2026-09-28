@@ -1,5 +1,7 @@
 # Metal Madness Machine
 
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/d0445e34-4b0a-4900-91e4-d2371552d050" />
+
 ## Description
 
 **EN:** Cheese fever has gone wild! Driven by a craving for cheese, a little mouse snuck into a giant factory. But instead of a cheesy paradise, it's facing a frantic race for survival! Dodge falling cargo, rolling cans, and treacherous traps on the endless conveyor belt. Rack up the highest score and prove that nothing is impossible for a true cheese-loving soul!
